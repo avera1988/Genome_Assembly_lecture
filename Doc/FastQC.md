@@ -71,7 +71,7 @@ total 1.2G
  ```console
  [avera@debian DZSPH5021_V1T_1-22297444]$ firefox DZSPH5021-V1T-1_S14_L002_R1_001_fastqc.html
  ```
- ### Exercise 1 Produce a fastQC report for all Illumina and PacBio files using the command line.
+ ### Exercise 1 Produce all fastQC reports for all Illumina and PacBio fastq files using the command line.
  
  
  
