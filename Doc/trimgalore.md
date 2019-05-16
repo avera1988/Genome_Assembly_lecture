@@ -1,6 +1,6 @@
 ## Quality filter with trim galore
 
-### Create a TrimGalore directory and copy there the illumina fastq.gz files and decompress them
+### Create a TrimGalore directory, copy there the illumina fastq.gz files and decompress all files
 
 ```console
 [avera@debian FastQC]$ mkdir TrimGalore
