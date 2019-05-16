@@ -1,4 +1,4 @@
-# Instructions to create FastQC reports using multiple fastq fasta files
+# Instructions to create FastQC reports using multiple fastq files
 
 1. Download the Data folder [Data](https://osu.box.com/s/9yz3cotyv9ghmd3ab3esinc1i0kds6ow)
 2. Open a terminal
