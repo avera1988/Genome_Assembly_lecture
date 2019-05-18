@@ -1,4 +1,6 @@
+# Genome Assembly using IDBA_UD assembler
 
+### First We need to create a directory named IDBA
 ```console
 [veraponcedeleon.1@u016 Class_May_2019]$ mkdir IDBA
 [veraponcedeleon.1@u016 Class_May_2019]$ cd IDBA/
