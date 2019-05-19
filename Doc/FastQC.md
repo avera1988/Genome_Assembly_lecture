@@ -64,7 +64,7 @@ DacBet_1.fastq  DacBet_1_fastqc.html  DacBet_1_fastqc.zip  DacBet_2.fastq  DacBe
  ```console
 [veraponcedeleon.1@unity-1 Illumina]$ firefox DacBet_1_fastqc.html.html
  ```
- ### Exercise 1 Produce all fastQC reports for all Illumina and PacBio fastq from Raw_reads_soft and Raw_reads_heavy files using the command line.
+ ### Exercise 1 Produce all fastQC reports for all Illumina and PacBio fastq from Raw_reads_soft files using the command line.
  
  
  
