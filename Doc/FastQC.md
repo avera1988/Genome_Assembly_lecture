@@ -12,18 +12,14 @@
 total 4.0K
 drwxr-xr-x 2 avera avera 4.0K May 16 11:51 FastQC
 [avera@debian CBG_IPN]$ cd FastQC/
-[avera@debian FastQC]$ mv /home/avera/Project/Class/Raw_reads.tar.gz .
-[avera@debian FastQC]$ tar -xzvf Raw_reads.tar.gz 
-Raw_reads/
-Raw_reads/PacBio/
-Raw_reads/PacBio/wDacB.fastq
-Raw_reads/Illumina/
-Raw_reads/Illumina/DZSPH5021_V1T_1-22297444/
-Raw_reads/Illumina/DZSPH5021_V1T_1-22297444/DZSPH5021-V1T-1_S14_L002_R2_001.fastq.gz
-Raw_reads/Illumina/DZSPH5021_V1T_1-22297444/DZSPH5021-V1T-1_S14_L002_R1_001.fastq.gz
-Raw_reads/Illumina/DacBeta/
-Raw_reads/Illumina/DacBeta/DacBet_2.fastq.gz
-Raw_reads/Illumina/DacBeta/DacBet_1.fastq.gz
+[avera@debian FastQC]$ mv ../Raw_reads_soft.tar.gz  .
+[avera@debian FastQC]$ tar -xzvf Raw_reads_soft.tar.gz
+Raw_reads_soft/
+Raw_reads_soft/Illumina/
+Raw_reads_soft/Illumina/DacBet_1.fastq
+Raw_reads_soft/Illumina/DacBet_2.fastq
+Raw_reads_soft/PacBio/
+Raw_reads_soft/PacBio/DacBeta.pacBio.fastq
 ```
 ### Now we can use FastQC by calling it with:
 ```console
@@ -45,33 +41,27 @@ SYNOPSIS
            [-c contaminant file] seqfile1 .. seqfileN
 ```
 
-**Enter to ~/FastQC/Raw_reads/Illumina/DZSPH5021_V1T_1-22297444**
+**Enter to ~FastQC/Raw_reads_soft/Illumina/**
 
 ```console
-[avera@debian DZSPH5021_V1T_1-22297444]$ pwd
-/home/avera/Project/Class/CBG_IPN/FastQC/Raw_reads/Illumina/DZSPH5021_V1T_1-22297444
+[veraponcedeleon.1@unity-1 Illumina]$ pwd
+/fs/project/obcp/veraponcedelon.1/Class_May_2019/FastQC/Raw_reads_soft/Illumina
 ```
 
 Let's run fastQC for these two files
  ```console
- [avera@debian DZSPH5021_V1T_1-22297444]$ fastqc -t 4 -f fastq DZSPH5021-V1T-1_S14_L002_R1_001.fastq.gz DZSPH5021-V1T-1_S14_L002_R2_001.fastq.gz
+[veraponcedeleon.1@unity-1 Illumina]$ fastqc -t 4 -f fastq DacBet_1.fastq DacBet_2.fastq
  ```
  Check the results 
  ```Console
- [avera@debian DZSPH5021_V1T_1-22297444]$ ls -lrth
-total 1.2G
--rw-r--r-- 1 avera avera 583M May 15 15:49 DZSPH5021-V1T-1_S14_L002_R1_001.fastq.gz
--rw-r--r-- 1 avera avera 631M May 15 15:49 DZSPH5021-V1T-1_S14_L002_R2_001.fastq.gz
--rw-r--r-- 1 avera avera 306K May 16 14:14 DZSPH5021-V1T-1_S14_L002_R2_001_fastqc.zip
--rw-r--r-- 1 avera avera 302K May 16 14:14 DZSPH5021-V1T-1_S14_L002_R1_001_fastqc.zip
--rw-r--r-- 1 avera avera 235K May 16 14:14 DZSPH5021-V1T-1_S14_L002_R2_001_fastqc.html
--rw-r--r-- 1 avera avera 231K May 16 14:14 DZSPH5021-V1T-1_S14_L002_R1_001_fastqc.html
+ [veraponcedeleon.1@unity-1 Illumina]$ ls
+DacBet_1.fastq  DacBet_1_fastqc.html  DacBet_1_fastqc.zip  DacBet_2.fastq  DacBet_2_fastqc.html  DacBet_2_fastqc.zip
  ```
  You can open the fastQC report using a web browser, in my case firefox
  ```console
- [avera@debian DZSPH5021_V1T_1-22297444]$ firefox DZSPH5021-V1T-1_S14_L002_R1_001_fastqc.html
+[veraponcedeleon.1@unity-1 Illumina]$ firefox DacBet_1_fastqc.html.html
  ```
- ### Exercise 1 Produce all fastQC reports for all Illumina and PacBio fastq files using the command line.
+ ### Exercise 1 Produce all fastQC reports for all Illumina and PacBio fastq from Raw_reads_soft and Raw_reads_heavy files using the command line.
  
  
  
