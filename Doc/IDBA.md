@@ -61,7 +61,14 @@ Running IDBA with Dac.fasta file:
 ```console
 (base) [veraponcedeleon.1@unity-1 IDBA]$ ls
 DacBet_1_val_1.fq  DacBet_2_val_2.fq  DacBIdba  Dac.fasta  Dac.total.fq  idba.log
+(base) [veraponcedeleon.1@u005 IDBA]$ cd DacBIdba/
+(base) [veraponcedeleon.1@u005 DacBIdba]$ ls
+align-100-0  align-60  contig-100.fa  contig-60.fa  graph-100.fa  graph-60.fa  local-contig-20.fa  local-contig-80.fa
+align-20     align-80  contig-20.fa   contig-80.fa  graph-20.fa   graph-80.fa  local-contig-40.fa  log
+align-40     begin     contig-40.fa   contig.fa     graph-40.fa   kmer         local-contig-60.fa
 ```
-
+ **Take a look into the basic assembly statistics**
+ 
+ 
 
 
