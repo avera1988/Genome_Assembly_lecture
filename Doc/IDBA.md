@@ -16,7 +16,7 @@ As IDBA do not work with fastq files, we need to transform this file into fasta 
 ```Console
 [veraponcedeleon.1@u016 IDBA]$ ~/bin/idba/bin/fq2fa Dac.total.fq Dac.fasta
 ```
-*~ symbol means my_home_directory, as I have installed IDBA in my home bin path I used remember to use your own path*
+*~symbol means my_home_directory, as I have installed IDBA in my home bin path I used remember to use your own path*
 
 Now we have all the elements to run IDBA_ud, let's check the help message
 ```console
