@@ -68,7 +68,30 @@ align-20     align-80  contig-20.fa   contig-80.fa  graph-20.fa   graph-80.fa  l
 align-40     begin     contig-40.fa   contig.fa     graph-40.fa   kmer         local-contig-60.fa
 ```
  **Take a look into the basic assembly statistics**
- 
- 
+
+We can run the assembly.stats.pl script form scripts directory. 
+```console
+[veraponcedeleon.1@u005 DacBIdba]$ perl /fs/project/obcp/veraponcedelon.1/Class_May_2019/scripts/assembly.stats.pl contig.fa
+
+Sample_ID       Genome  Contigs Mean    Median  N50     Largest GC(%)   N_count N(%)    Gap_count
+contig.fa       3530559 469     7527    5251    11866   39790   62.76           0.00    0
+```
+
+These are the basic stats. Also using a more complex scritp from https://github.com/sanger-pathogens/assembly-stats/ we can detect all Nx parameters
+```console
+[veraponcedeleon.1@u005 DacBIdba]$ /fs/project/obcp/veraponcedelon.1/Class_May_2019/scripts/assembly-stats/assembly-stats contig.fa
+stats for contig.fa
+sum = 3530559, n = 469, ave = 7527.84, largest = 39790
+N50 = 11866, n = 89
+N60 = 9920, n = 122
+N70 = 8021, n = 161
+N80 = 6292, n = 211
+N90 = 3877, n = 283
+N100 = 326, n = 469
+N_count = 0
+Gaps = 0
+```
+
+
 
 
