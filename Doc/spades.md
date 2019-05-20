@@ -80,3 +80,31 @@ N100 = 56, n = 729
 N_count = 0
 Gaps = 0
 ```
+We can also see the coverage, such as in IDBA. But with SPADES we have the advantage that the coverage now is printed in the header, let's take a look
+```console
+(base) [veraponcedeleon.1@u009 DacSpades]$ head contigs.fasta 
+>NODE_1_length_4802_cov_7.986939
+```
+Following the same idea as in IDBA let's obtain the coverage for SPADES assembly
+
+```console
+(base) [veraponcedeleon.1@u009 DacSpades]$ ~/scripts/cambia_seqs_unalinea.pl contigs.fasta > contigs.one.fasta
+(base) [veraponcedeleon.1@u009 DacSpades]$ perl ../../scripts/coverage.spades.pl contigs.one.fasta 
+contigs.one.fasta coverage=	23.099
+```
+
+You can see here that using SPADES the average coverage is higher than IDBA's using the same Q value. But the number of contigs are quite big: sum = 3547469, n = 729, ave = 4866.21, largest = 38609
+
+**Remember that SPADES allow us to do an hybrid assembly, let's do it and see if our stats improves or not**
+
+To do this we are going to use the PacBio Dac file so let's be sure you have this file in the SPADES directory:
+
+```console
+DacBeta.pacBio.fastq
+```
+
+Now we can give to spades de PacBio and Illumina reads as following:
+
+```console
+(base) [veraponcedeleon.1@u009 SPADES]$ nohup spades.py -o DacBSpades_hybrid -1 DacBet.30_val_1.fq -2 DacBet.30_val_2.fq --pacbio DacBeta.pacBio.fastq -t 4 > spades.hybrid.log &
+```
