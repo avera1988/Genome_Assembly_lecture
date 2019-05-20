@@ -188,7 +188,7 @@ contig-100_8	27822	25.512
 contig-100_9	27119	27.929
 ```
 
-*Notice here I did not concatenate the fastq files using cat instead I used a fq2fa script from IDBA
+*Notice here I did not concatenate the fastq files using cat instead I used a fq2fa script from IDBA*
 
 
 
