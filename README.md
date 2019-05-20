@@ -16,6 +16,6 @@ $ git clone https://github.com/avera1988/Genome_Assembly_lecture.git
  
  ```console
  $ wget https://github.com/avera1988/Genome_Assembly_lecture/archive/master.zip
- $ uzip master.zip
+ $ unzip master.zip
  ```
 
