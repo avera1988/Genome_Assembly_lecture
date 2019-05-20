@@ -22,3 +22,5 @@ $ git clone https://github.com/avera1988/Genome_Assembly_lecture.git
  ```
 
 ### Some interesting papers about genome assembly strategies are in [Literature](https://github.com/avera1988/Genome_Assembly_lecture/tree/master/literature)
+
+
