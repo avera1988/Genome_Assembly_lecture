@@ -105,6 +105,8 @@ In this header we have the contig length and the number of reads per each contig
 *Remembering the coverage formula:
 
 **Coverage:**
+
+
 C = nl/L
 C=Coverage
 n=Number of reads
@@ -126,7 +128,8 @@ Then let's apply the ~/scripts/covergae.idba.pl to these new file. As a result i
 contig.one.fa coverage=	13.461
 ```
 
-This script will generate a contig.one.fa.coverage.txt where the first column has the contig ID and the second column the coverage
+This script will generate a contig.one.fa.coverage.txt where the first column has the contig ID, the length and the last column the coverage
+
 ```console
 (base) [veraponcedeleon.1@u009 DacBIdba]$ head contig.one.fa.coverage.txt 
 contig-100_0	34647	12.220
@@ -141,11 +144,51 @@ contig-100_8	24685	11.902
 contig-100_9	24004	11.594
 ```
 
+### As we can see we have low coverage and a hihg number of contigs (>500) to report a genome anoucement of Bacterial genome, NCBI request up to 200 contigs. Let's try using an other q filter value, I'm going do it with Q>=22.
 
-  
-**These are only the basic statistics. As we can see there are a small contigs (< 500 nt), this is not even a half of most bacterial genenes (~ 1000 nt). 
+```console
+(base) [veraponcedeleon.1@u009 DacBIdba]$ cd ..
+(base) [veraponcedeleon.1@u009 IDBA]$ mkdir DacBQ22
+(base) [veraponcedeleon.1@u009 IDBA]$ cd DacBQ22/
+(base) [veraponcedeleon.1@u009 DacBQ22]$ ln -s ../../TrimGalore/*22*fq .
+(base) [veraponcedeleon.1@u009 DacBQ22]$ ~/bin/idba/bin/fq2fa --merge DacBet.22_val_1.fq DacBet.22_val_2.fq Dac.fasta
+(base) [veraponcedeleon.1@u009 DacBQ22]$ nohup ~/bin/idba/bin/idba_ud -o DacB20 -r Dac.fasta --num_threads 4 --pre_correction > idba.log &
+(base) [veraponcedeleon.1@u009 DacBQ22]$ cd DacB20/
+(base) [veraponcedeleon.1@u009 DacB20]$ ls
 
+align-100-0  align-40  align-80  contig-100.fa  contig-40.fa  contig-80.fa  graph-100.fa  graph-40.fa  graph-80.fa  local-contig-20.fa  local-contig-60.fa  log
+align-20     align-60  begin     contig-20.fa   contig-60.fa  contig.fa     graph-20.fa   graph-60.fa  kmer         local-contig-40.fa  local-contig-80.fa
+(base) [veraponcedeleon.1@u009 DacB20]$ perl ../../../scripts/assembly.stats.pl contig.fa 
+Sample_ID	Genome	Contigs	Mean	Median	N50	Largest	GC(%)	N_count	N(%)	Gap_count
+contig.fa	3530166	442	7986	5761	12891	38881	62.75		0.00	0
+(base) [veraponcedeleon.1@u009 DacB20]$ ../../../scripts/assembly-stats/assembly-stats contig.fa 
+stats for contig.fa
+sum = 3530166, n = 442, ave = 7986.80, largest = 38881
+N50 = 12891, n = 92
+N60 = 11028, n = 121
+N70 = 8118, n = 158
+N80 = 6539, n = 206
+N90 = 4000, n = 275
+N100 = 511, n = 442
+N_count = 0
+Gaps = 0
+(base) [veraponcedeleon.1@u009 DacB20]$ ~/scripts/cambia_seqs_unalinea.pl contig.fa > contig.one.fa
+(base) [veraponcedeleon.1@u009 DacB20]$ perl ../../../scripts/coverage.idba.pl contig.one.fa 
+contig.one.fa coverage=	28.488
+(base) [veraponcedeleon.1@u009 DacB20]$ head contig.one.fa.coverage.txt 
+contig-100_0	38881	27.258
+contig-100_1	37751	28.142
+contig-100_2	34671	26.795
+contig-100_3	34147	28.231
+contig-100_4	33348	26.160
+contig-100_5	33014	26.849
+contig-100_6	30867	26.170
+contig-100_7	28217	25.977
+contig-100_8	27822	25.512
+contig-100_9	27119	27.929
+```
 
+*Notice here I did not concatenate the fastq files using cat instead I used a fq2fa script from IDBA
 
 
 
