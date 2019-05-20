@@ -2,7 +2,7 @@
 
 1. Download the Data folder [Data](https://osu.box.com/s/fwt94wix99q9fv3t78ni6ch0ph5hiy9r)
 
--These are a small data set from [paper](https://academic.oup.com/gbe/article/9/9/2237/4091605)
+-This is a small data set from [paper](https://academic.oup.com/gbe/article/9/9/2237/4091605)
 
 2. Open a terminal
 3. Create a folder named FastQC
