@@ -104,13 +104,43 @@ In this header we have the contig length and the number of reads per each contig
 
 *Remembering the coverage formula:
 
-**Coverage:
+**Coverage:**
 C = nl/L
 C=Coverage
 n=Number of reads
 l=Read length
-L=Genome size (length) in bases
-**
+L=Genome fragment size (length) in bases
+
+As we have all the elements to calculate the coverage in the conting header let's obtain a coverage table.
+
+**First we need to transforme the contigs.fa into a single lane fasta file, it means a header and the next line the sequnce. We can do it using the perl scripts/cambia_seqs_unalinea.pl
+
+```console
+(base) [veraponcedeleon.1@u009 DacBIdba]$ perl ~/scripts/cambia_seqs_unalinea.pl contig.fa > contig.one.fa
+```
+
+Then let's apply the ~/scripts/covergae.idba.pl to these new file. As a result it will give us the mean coverage of the assembly
+
+```console
+(base) [veraponcedeleon.1@u009 DacBIdba]$ perl ../../scripts/coverage.idba.pl contig.one.fa 
+contig.one.fa coverage=	13.461
+```
+
+This script will generate a contig.one.fa.coverage.txt where the first column has the contig ID and the second column the coverage
+```console
+(base) [veraponcedeleon.1@u009 DacBIdba]$ head contig.one.fa.coverage.txt 
+contig-100_0	34647	12.220
+contig-100_1	30833	11.968
+contig-100_2	29559	13.001
+contig-100_3	26892	12.282
+contig-100_4	26710	12.857
+contig-100_5	26669	11.883
+contig-100_6	25574	12.814
+contig-100_7	25430	18.962
+contig-100_8	24685	11.902
+contig-100_9	24004	11.594
+```
+
 
   
 **These are only the basic statistics. As we can see there are a small contigs (< 500 nt), this is not even a half of most bacterial genenes (~ 1000 nt). 
