@@ -100,6 +100,18 @@ We can also see the coverage, as IDBA do not print the coverage in the conting w
 (base) [veraponcedeleon.1@u009 DacBIdba]$ head -1 contig.fa 
 >contig-100_0 length_34647 read_count_4234
 ```
+In this header we have the contig length and the number of reads per each contig. 
+
+*Remembering the coverage formula:
+
+**Coverage:
+C = nl/L
+C=Coverage
+n=Number of reads
+l=Read length
+L=Genome size (length) in bases
+**
+
   
 **These are only the basic statistics. As we can see there are a small contigs (< 500 nt), this is not even a half of most bacterial genenes (~ 1000 nt). 
 
