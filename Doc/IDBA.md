@@ -1,12 +1,11 @@
 # Genome assembly using IDBA_UD assembler
 
-### First we need to create a directory named IDBA and move the TrimGalore filtred DacBet fastq files.
+### First we need to create a directory named IDBA and move the TrimGalore filtred DacBet q > 30 fastq files.
 **As fastq files sometimes are quite large, it is recommendable to use a symbolic (soft) link instead a real (hard) copy**
 ```console
 [veraponcedeleon.1@u016 Class_May_2019]$ mkdir IDBA
 [veraponcedeleon.1@u016 Class_May_2019]$ cd IDBA/
-ln -s ../TrimGalore/DacBet_1_val_1.fq .
-ln -s ../TrimGalore/DacBet_2_val_2.fq .
+[veraponcedeleon.1@u009 IDBA]$ ln -s ../TrimGalore/*30*fq .
 ```
 IDBA uses a fasta file to assembly, the user needs to concatenate the pair fastq files we can do it using the command cat: 
 ```console
@@ -75,25 +74,35 @@ align-40     begin     contig-40.fa   contig.fa     graph-40.fa   kmer         l
 We can run the assembly.stats.pl script form scripts directory. 
 ```console
 [veraponcedeleon.1@u005 DacBIdba]$ perl /fs/project/obcp/veraponcedelon.1/Class_May_2019/scripts/assembly.stats.pl contig.fa
+Sample_ID	Genome	Contigs	Mean	Median	N50	Largest	GC(%)	N_count	N(%)	Gap_count
+contig.fa	3511207	578	6074	3994	10241	34647	62.75		0.00	0
 
-Sample_ID       Genome  Contigs Mean    Median  N50     Largest GC(%)   N_count N(%)    Gap_count
-contig.fa       3530559 469     7527    5251    11866   39790   62.76           0.00    0
 ```
 
 These are the basic stats. Also using a more complex scritp from https://github.com/sanger-pathogens/assembly-stats/ we can detect all Nx parameters
 ```console
 [veraponcedeleon.1@u005 DacBIdba]$ /fs/project/obcp/veraponcedelon.1/Class_May_2019/scripts/assembly-stats/assembly-stats contig.fa
 stats for contig.fa
-sum = 3530559, n = 469, ave = 7527.84, largest = 39790
-N50 = 11866, n = 89
-N60 = 9920, n = 122
-N70 = 8021, n = 161
-N80 = 6292, n = 211
-N90 = 3877, n = 283
-N100 = 326, n = 469
+sum = 3511207, n = 578, ave = 6074.75, largest = 34647
+N50 = 10241, n = 114
+N60 = 8080, n = 152
+N70 = 6530, n = 200
+N80 = 4550, n = 266
+N90 = 2948, n = 362
+N100 = 394, n = 578
 N_count = 0
 Gaps = 0
 ```
+
+We can also see the coverage, as IDBA do not print the coverage in the conting we can extract it using a perl scritp. First let's take a look into an idba contig:
+
+```console
+(base) [veraponcedeleon.1@u009 DacBIdba]$ head -1 contig.fa 
+>contig-100_0 length_34647 read_count_4234
+```
+  
+**These are only the basic statistics. As we can see there are a small contigs (< 500 nt), this is not even a half of most bacterial genenes (~ 1000 nt). 
+
 
 
 
