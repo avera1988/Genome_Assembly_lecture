@@ -6,6 +6,8 @@
 
 ### The protocols of this lecture are in [Doc](https://github.com/avera1988/Genome_Assembly_lecture/tree/master/Doc) section
 
+### Multiple pdf with slides for this lecture are in [Slides](https://github.com/avera1988/Genome_Assembly_lecture/tree/master/Slides)
+
 ### Repository cloning 
 
 If you have installed [Git](https://git-scm.com/) the easiest way to get this repository is by cloning it into your computer
