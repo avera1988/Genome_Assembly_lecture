@@ -4,6 +4,6 @@
 
 * This is the version 1 of this document. It was done to CBG-IPN May 2019.
 
-###The protocols of this lecture are in [Doc](https://github.com/avera1988/Genome_Assembly_lecture/tree/master/Doc) section
+### The protocols of this lecture are in [Doc](https://github.com/avera1988/Genome_Assembly_lecture/tree/master/Doc) section
 
 
