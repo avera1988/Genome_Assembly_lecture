@@ -53,3 +53,30 @@ drwxr-xr-x 2 veraponcedeleon.1 RESEARCH-EEOB-Sabree      10 May 20 17:16 misc
 drwxr-xr-x 2 veraponcedeleon.1 RESEARCH-EEOB-Sabree      10 May 20 17:16 tmp
 -rw-r--r-- 1 veraponcedeleon.1 RESEARCH-EEOB-Sabree     686 May 20 17:16 warnings.log
 ```
+ **Take a look into the basic assembly statistics**
+
+We can run the assembly.stats.pl script form scripts directory.
+
+```console
+(base) [veraponcedeleon.1@u009 DacSpades]$ perl ../../scripts/assembly.stats.pl contigs.fasta 
+
+Sample_ID	Genome	Contigs	Mean	Median	N50	Largest	GC(%)	N_count	N(%)	Gap_count
+contigs.fasta	3547469	729	4866	2873	10301	38609	62.74		0.00	0
+
+```
+
+These are the basic stats. Also using a more complex scritp from https://github.com/sanger-pathogens/assembly-stats/ we can detect all Nx parameters
+
+```console
+(base) [veraponcedeleon.1@u009 DacSpades]$ ../../scripts/assembly-stats/assembly-stats contigs.fasta 
+stats for contigs.fasta
+sum = 3547469, n = 729, ave = 4866.21, largest = 38609
+N50 = 10301, n = 110
+N60 = 8367, n = 148
+N70 = 6752, n = 195
+N80 = 4770, n = 258
+N90 = 3093, n = 350
+N100 = 56, n = 729
+N_count = 0
+Gaps = 0
+```
