@@ -6,7 +6,7 @@
 
 ### The protocols of this lecture are in [Doc](https://github.com/avera1988/Genome_Assembly_lecture/tree/master/Doc) section
 
-### Multiple pdf with slides for this lecture are in [Slides](https://github.com/avera1988/Genome_Assembly_lecture/tree/master/Slides)
+### Multiple pdf files with slides for this lecture are in [Slides](https://github.com/avera1988/Genome_Assembly_lecture/tree/master/Slides)
 
 ### Repository cloning 
 
