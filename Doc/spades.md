@@ -36,15 +36,11 @@ Once finished a Directory DacSpades will be created
 DacBet.30_val_1.fq  DacBet.30_val_2.fq  DacBeta.pacBio.fastq  DacSpades  spades.log
 (base) [veraponcedeleon.1@u009 SPADES]$ cd DacSpades/
 (base) [veraponcedeleon.1@u009 DacSpades]$ ls -l
-
 total 17824
 -rw-r--r-- 1 veraponcedeleon.1 RESEARCH-EEOB-Sabree 7294006 May 20 17:16 assembly_graph.fastg
 -rw-r--r-- 1 veraponcedeleon.1 RESEARCH-EEOB-Sabree 3568782 May 20 17:16 assembly_graph_with_scaffolds.gfa
 -rw-r--r-- 1 veraponcedeleon.1 RESEARCH-EEOB-Sabree 3632240 May 20 17:16 before_rr.fasta
 -rw-r--r-- 1 veraponcedeleon.1 RESEARCH-EEOB-Sabree 3632240 May 20 17:16 contigs.fasta
--rw-r--r-- 1 veraponcedeleon.1 RESEARCH-EEOB-Sabree       0 May 20 17:34 contigs.fasta.coverage.txt
--rw-r--r-- 1 veraponcedeleon.1 RESEARCH-EEOB-Sabree       0 May 20 17:34 contigs.fasta.mod.fasta
--rw-r--r-- 1 veraponcedeleon.1 RESEARCH-EEOB-Sabree       0 May 20 17:45 contigs.fasta.one.mod.fasta
 drwxr-xr-x 3 veraponcedeleon.1 RESEARCH-EEOB-Sabree     204 May 20 17:15 corrected
 -rw-r--r-- 1 veraponcedeleon.1 RESEARCH-EEOB-Sabree      97 May 20 17:15 dataset.info
 -rw-r--r-- 1 veraponcedeleon.1 RESEARCH-EEOB-Sabree     240 May 20 17:14 input_dataset.yaml
@@ -56,5 +52,4 @@ drwxr-xr-x 2 veraponcedeleon.1 RESEARCH-EEOB-Sabree      10 May 20 17:16 misc
 -rw-r--r-- 1 veraponcedeleon.1 RESEARCH-EEOB-Sabree  100910 May 20 17:16 spades.log
 drwxr-xr-x 2 veraponcedeleon.1 RESEARCH-EEOB-Sabree      10 May 20 17:16 tmp
 -rw-r--r-- 1 veraponcedeleon.1 RESEARCH-EEOB-Sabree     686 May 20 17:16 warnings.log
-
 ```
