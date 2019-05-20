@@ -20,7 +20,8 @@ As IDBA do not work with fastq files, we need to transform this file into fasta 
 
 Now we have all the elements to run IDBA_ud, let's check the help message
 ```console
-base) [veraponcedeleon.1@unity-1 DacBIdba]$ ~/bin/idba/bin/idba_ud
+(base) [veraponcedeleon.1@unity-1 DacBIdba]$ ~/bin/idba/bin/idba_ud
+
 not enough parameters
 IDBA-UD - Iterative de Bruijn Graph Assembler for sequencing data with highly uneven depth.
 Usage: idba_ud -r read.fa -o output_dir
