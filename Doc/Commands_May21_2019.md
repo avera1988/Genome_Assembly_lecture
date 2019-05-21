@@ -34,7 +34,7 @@ perl assembly.stats.pl
 /fs/project/obcp/veraponcedelon.1/Class_May_2019/scripts/assembly-stats/assembly-stats contig.fa
 ```
 
-Sending the stats to a txt files
+Sending the stats to txt files
 
 ```console
 perl /fs/project/obcp/veraponcedelon.1/Class_May_2019/scripts/assembly.stats.pl contig.fa > stats.perl.assembly.txt
