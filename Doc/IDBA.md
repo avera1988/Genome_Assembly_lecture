@@ -154,7 +154,7 @@ contig-100_8	24685	11.902
 contig-100_9	24004	11.594
 ```
 
-### As we can see we have low coverage and a hihg number of contigs (>500) to report a genome anoucement of Bacterial genome, NCBI request up to 200 contigs. Let's try using an other q filter value, I'm using now a Q>=22.
+### As we can see we have low coverage and a hihg number of contigs (>500) to report a genome announcement of Bacterial genome, NCBI request up to 200 contigs. Let's try using an other quality filter value, I'm using now a Q>=22.
 
 ```console
 (base) [veraponcedeleon.1@u009 DacBIdba]$ cd ..
