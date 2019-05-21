@@ -145,6 +145,7 @@ INFO	Results written in /fs/project/obcp/veraponcedelon.1/Class_May_2019/IDBA/Da
 *I am using 4 cpus this is why -c 4*
 
 **The result is given in the standar output (the screen) as:
+
 INFO	Results:
 INFO	C:95.2%[S:93.2%,D:2.0%],F:2.0%,M:2.8%,n:148
 INFO	141 Complete BUSCOs (C)
@@ -154,4 +155,83 @@ INFO	3 Fragmented BUSCOs (F)
 INFO	4 Missing BUSCOs (M)
 INFO	148 Total BUSCO groups searched
 
+However BUSCO also creates two directories 
+
+```console
+(base) [veraponcedeleon.1@unity-1 BUSCO]$ ls
+contig.1000.fa  contig.1000.fa.amino.faa  contig.1000.fa.cds.ffn  prodigal.out  run_busco  tmp
+```
+
+The run_busco and the tmp there you will find the results as well.
+
+```console
+(base) [veraponcedeleon.1@unity-1 BUSCO]$ cd run_busco/
+(base) [veraponcedeleon.1@unity-1 run_busco]$ more short_summary_busco.txt 
+# BUSCO version is: 3.0.2 
+# The lineage dataset is: bacteria_odb9 (Creation date: 2016-11-01, number of species: 3663, number of BUSCOs: 148)
+# To reproduce this run: python /home/veraponcedeleon.1/bin/busco/scripts/run_BUSCO.py -i contig.1000.fa.amino.faa -o busco -l /fs/project/obcp/veraponcedelon.1/database/BUSCOS/bacteria_od
+b9/ -m proteins -c 4
+#
+# Summarized benchmarking in BUSCO notation for file contig.1000.fa.amino.faa
+# BUSCO was run in mode: proteins
+
+	C:95.2%[S:93.2%,D:2.0%],F:2.0%,M:2.8%,n:148
+
+	141	Complete BUSCOs (C)
+	138	Complete and single-copy BUSCOs (S)
+	3	Complete and duplicated BUSCOs (D)
+	3	Fragmented BUSCOs (F)
+	4	Missing BUSCOs (M)
+	148	Total BUSCO groups searched
+```
+
+**Now we can notice that our genome is not complete, at least using the total bacteria database there are 4 missing orthologs genes not present in this genome.**
+
+If you have more information about the taxonomy of your genome you can use a more narrow sarch for orthologs. In this case I know that DacBet data came from a Beta proteobacteria so I downloaded the Betaproteobacteria BUSCO data set
+
+```console
+
+(base) [veraponcedeleon.1@unity-1 BUSCOS]$ wget https://busco.ezlab.org/datasets/betaproteobacteria_odb9.tar.gz
+base) [veraponcedeleon.1@unity-1 BUSCOS]$ tar -xzvf betaproteobacteria_odb9.tar.gz
+```
+
+And run busco using this data base
+
+```console
+(base) [veraponcedeleon.1@unity-1 BUSCO]$ ~/bin/busco/scripts/run_BUSCO.py -i contig.1000.fa.amino.faa -m prot -l /fs/project/obcp/veraponcedelon.1/database/BUSCOS/betaproteobacteria_odb9 -o beta_bacteria_busco -c 4
+INFO	****************** Start a BUSCO 3.0.2 analysis, current time: 05/21/2019 16:36:04 ******************
+INFO	Configuration loaded from /home/veraponcedeleon.1/bin/busco/scripts/../config/config.ini
+INFO	Init tools...
+INFO	Check dependencies...
+INFO	Check input file...
+INFO	To reproduce this run: python /home/veraponcedeleon.1/bin/busco/scripts/run_BUSCO.py -i contig.1000.fa.amino.faa -o beta_bacteria_busco -l /fs/project/obcp/veraponcedelon.1/database/BUSCOS/betaproteobacteria_odb9/ -m proteins -c 4
+INFO	Mode is: proteins
+INFO	The lineage dataset is: betaproteobacteria_odb9 (prokaryota)
+INFO	Temp directory is ./tmp/
+INFO	Running HMMER on the proteins:
+INFO	[hmmsearch]	59 of 582 task(s) completed at 05/21/2019 16:36:05
+INFO	[hmmsearch]	117 of 582 task(s) completed at 05/21/2019 16:36:06
+INFO	[hmmsearch]	175 of 582 task(s) completed at 05/21/2019 16:36:06
+INFO	[hmmsearch]	233 of 582 task(s) completed at 05/21/2019 16:36:07
+INFO	[hmmsearch]	292 of 582 task(s) completed at 05/21/2019 16:36:08
+INFO	[hmmsearch]	350 of 582 task(s) completed at 05/21/2019 16:36:09
+INFO	[hmmsearch]	408 of 582 task(s) completed at 05/21/2019 16:36:10
+INFO	[hmmsearch]	466 of 582 task(s) completed at 05/21/2019 16:36:10
+INFO	[hmmsearch]	524 of 582 task(s) completed at 05/21/2019 16:36:11
+INFO	[hmmsearch]	582 of 582 task(s) completed at 05/21/2019 16:36:12
+INFO	Results:
+INFO	C:93.0%[S:92.8%,D:0.2%],F:4.8%,M:2.2%,n:582
+INFO	541 Complete BUSCOs (C)
+INFO	540 Complete and single-copy BUSCOs (S)
+INFO	1 Complete and duplicated BUSCOs (D)
+INFO	28 Fragmented BUSCOs (F)
+INFO	13 Missing BUSCOs (M)
+INFO	582 Total BUSCO groups searched
+INFO	BUSCO analysis done. Total running time: 8.01606297493 seconds
+INFO	Results written in /fs/project/obcp/veraponcedelon.1/Class_May_2019/IDBA/DacBQ22/DacB20/BUSCO/run_beta_bacteria_busco/
+```
+
+As you see now the BUSCO completeness is less than the previous one, this is due to there are more orthologs to look. 
+
+**Using this we can estiamte that our assembly is between 93 - 96 % of completeness.
 
