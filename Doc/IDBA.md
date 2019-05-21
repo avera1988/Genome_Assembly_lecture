@@ -54,6 +54,8 @@ Running IDBA with Dac.fasta file:
 ```
 *This process requires from minutes to hrs to be completed I recommend use nohup and send the process to the background for running. Additionaly the time command is helpful to show us how long our process took. 
 
+*~ Means my home this is why some times you see this symbol in my commands.
+
 ###As soon as finished IDBA has created a directory (in this case DacBIdba) and the log from nohup command "idba.log2.
 ```console
 (base) [veraponcedeleon.1@u005 IDBA]$ ls
