@@ -40,3 +40,12 @@ Sending the stats to txt files
 perl /fs/project/obcp/veraponcedelon.1/Class_May_2019/scripts/assembly.stats.pl contig.fa > stats.perl.assembly.txt
 /fs/project/obcp/veraponcedelon.1/Class_May_2019/scripts/assembly-stats/assembly-stats contig.fa > stats.assembly.txt
 ```
+
+**Remember to follow the progress of your process you can do it with htop command*
+
+```console
+htop 
+```
+
+![Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/htop.png)
+
