@@ -5,7 +5,8 @@
 ```console
 [veraponcedeleon.1@u016 Class_May_2019]$ mkdir IDBA
 [veraponcedeleon.1@u016 Class_May_2019]$ cd IDBA/
-[veraponcedeleon.1@u009 IDBA]$ ln -s ../TrimGalore/*fq .
+[veraponcedeleon.1@u009 IDBA]$ ln -s ../TrimGalore/DacBet.30_val_1.fq .
+[veraponcedeleon.1@u009 IDBA]$ ln -s ../TrimGalore/DacBet.30_val_2.fq .
 ```
 IDBA uses a single fasta file to assembly, so the user needs to concatenate the pair fastq and convert it into a fasta single file; we can do it using the fq2fa from ~/bin/idba/bin/fq2fa: 
 ```console
