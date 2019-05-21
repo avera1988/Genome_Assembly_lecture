@@ -194,7 +194,5 @@ contig-100_8	27822	25.512
 contig-100_9	27119	27.929
 ```
 
-*Notice here I did not concatenate the fastq files using cat instead I used a fq2fa script from IDBA*
-
 **Using this new data set we can apreciate how the number of contigs (fragmentation) decreased sum = 3530166, n = 442, ave = 7986.80, largest = 38881; and also the N90 is higher N90 = 4000, n = 275. Lastly the coverage is so much better: contig.one.fa coverage=	28.488**
 
