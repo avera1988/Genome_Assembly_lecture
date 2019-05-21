@@ -233,5 +233,5 @@ INFO	Results written in /fs/project/obcp/veraponcedelon.1/Class_May_2019/IDBA/Da
 
 As you see now the BUSCO completeness is less than the previous one, this is due to there are more orthologs to look. 
 
-**Using this we can estiamte that our assembly is between 93 - 96 % of completeness.
+**Using this we can estimate that our assembly is between 93 - 96 % of completeness.**
 
