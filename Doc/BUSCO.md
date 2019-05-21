@@ -108,7 +108,50 @@ optional arguments:
   -v, --version         Show this version and exit
   -h, --help            Show this help message and exit
 ```
-
+Basicaly we need the genome, the linage (orthologs seqs) the output and if our genome is in nucleotides or amino acids. As we have already predicted the amino acid sequences of our genome, we indicate -m prot this way BUSCO is not running augustus to predict genes.
 ```console
 (base) [veraponcedeleon.1@unity-1 BUSCO]$ ~/bin/busco/scripts/run_BUSCO.py -i contig.1000.fa.amino.faa -m prot -l /fs/project/obcp/veraponcedelon.1/database/BUSCOS/bacteria_odb9 -o busco -c 4
+INFO	****************** Start a BUSCO 3.0.2 analysis, current time: 05/21/2019 16:28:15 ******************
+INFO	Configuration loaded from /home/veraponcedeleon.1/bin/busco/scripts/../config/config.ini
+INFO	Init tools...
+INFO	Check dependencies...
+INFO	Check input file...
+INFO	To reproduce this run: python /home/veraponcedeleon.1/bin/busco/scripts/run_BUSCO.py -i contig.1000.fa.amino.faa -o busco -l /fs/project/obcp/veraponcedelon.1/database/BUSCOS/bacteria_odb9/ -m proteins -c 4
+INFO	Mode is: proteins
+INFO	The lineage dataset is: bacteria_odb9 (prokaryota)
+INFO	Temp directory is ./tmp/
+INFO	Running HMMER on the proteins:
+INFO	[hmmsearch]	15 of 148 task(s) completed at 05/21/2019 16:28:16
+INFO	[hmmsearch]	30 of 148 task(s) completed at 05/21/2019 16:28:16
+INFO	[hmmsearch]	45 of 148 task(s) completed at 05/21/2019 16:28:16
+INFO	[hmmsearch]	60 of 148 task(s) completed at 05/21/2019 16:28:16
+INFO	[hmmsearch]	75 of 148 task(s) completed at 05/21/2019 16:28:16
+INFO	[hmmsearch]	89 of 148 task(s) completed at 05/21/2019 16:28:16
+INFO	[hmmsearch]	104 of 148 task(s) completed at 05/21/2019 16:28:17
+INFO	[hmmsearch]	119 of 148 task(s) completed at 05/21/2019 16:28:17
+INFO	[hmmsearch]	134 of 148 task(s) completed at 05/21/2019 16:28:17
+INFO	[hmmsearch]	148 of 148 task(s) completed at 05/21/2019 16:28:17
+INFO	Results:
+INFO	C:95.2%[S:93.2%,D:2.0%],F:2.0%,M:2.8%,n:148
+INFO	141 Complete BUSCOs (C)
+INFO	138 Complete and single-copy BUSCOs (S)
+INFO	3 Complete and duplicated BUSCOs (D)
+INFO	3 Fragmented BUSCOs (F)
+INFO	4 Missing BUSCOs (M)
+INFO	148 Total BUSCO groups searched
+INFO	BUSCO analysis done. Total running time: 1.9100420475 seconds
+INFO	Results written in /fs/project/obcp/veraponcedelon.1/Class_May_2019/IDBA/DacBQ22/DacB20/BUSCO/run_busco/
 ```
+*I am using 4 cpus this is why -c 4*
+
+**The result is given in the standar output (the screen) as:
+INFO	Results:
+INFO	C:95.2%[S:93.2%,D:2.0%],F:2.0%,M:2.8%,n:148
+INFO	141 Complete BUSCOs (C)
+INFO	138 Complete and single-copy BUSCOs (S)
+INFO	3 Complete and duplicated BUSCOs (D)
+INFO	3 Fragmented BUSCOs (F)
+INFO	4 Missing BUSCOs (M)
+INFO	148 Total BUSCO groups searched
+
+
