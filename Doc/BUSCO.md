@@ -146,14 +146,14 @@ INFO	Results written in /fs/project/obcp/veraponcedelon.1/Class_May_2019/IDBA/Da
 
 **The result is given in the standar output (the screen) as:
 
-INFO	Results:
-INFO	C:95.2%[S:93.2%,D:2.0%],F:2.0%,M:2.8%,n:148
-INFO	141 Complete BUSCOs (C)
-INFO	138 Complete and single-copy BUSCOs (S)
-INFO	3 Complete and duplicated BUSCOs (D)
-INFO	3 Fragmented BUSCOs (F)
-INFO	4 Missing BUSCOs (M)
-INFO	148 Total BUSCO groups searched
+* INFO	Results:
+* INFO	C:95.2%[S:93.2%,D:2.0%],F:2.0%,M:2.8%,n:148
+* INFO	141 Complete BUSCOs (C)
+* INFO	138 Complete and single-copy BUSCOs (S)
+* INFO	3 Complete and duplicated BUSCOs (D)
+* INFO	3 Fragmented BUSCOs (F)
+* INFO	4 Missing BUSCOs (M)
+* INFO	148 Total BUSCO groups searched
 
 However BUSCO also creates two directories 
 
