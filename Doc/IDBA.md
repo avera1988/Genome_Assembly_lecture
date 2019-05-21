@@ -1,6 +1,6 @@
 # Genome assembly using IDBA_UD assembler
 
-### First we need to create a directory named IDBA and move the TrimGalore filtred DacBet q > 30 fastq files.
+### First we need to create a directory named IDBA and move the TrimGalore filtred DacBet with a quality value (q > 30) fastq files.
 **As fastq files sometimes are quite large, it is recommendable to use a symbolic (soft) link instead a real (hard) copy**
 ```console
 [veraponcedeleon.1@u016 Class_May_2019]$ mkdir IDBA
