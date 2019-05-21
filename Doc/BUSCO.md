@@ -6,7 +6,7 @@ So now let's use those contigs from assembly of reads form quality of Q>=22 and 
 
 **BUSCO looks for a certain number of orthologous genes and counts the total of these ortholog genes present in your genome. That way it can estimate the completeness. For example if the database has 10 genes and BUSCO find 9 of them in your genome it scores a completeness of 90 %.**
 
-### As busco uses genes we need to predict the codifying sequences of genes in our genome. BUSCO was developed to find genes in eukaryotesand uses Augustus to predic genes, but augustus is not well suitable to predic genes in prokariotic genenoes. So we are going to use prodigal to predic genes in our genome. In this session we will not disscuss prodigal we are only using as it. In further sessions a more deep explainaton about prodigal will be given.
+### As busco uses genes we need to predict the codifying sequences of genes in our genome. BUSCO was developed to find genes in eukaryotes and uses Augustus to predic genes, but augustus is not well suitable to predic genes in prokariotic genenomes. So we are going to use prodigal to predic genes in our genome. In this session we will not disscuss prodigal we are only using as it. In further sessions a more deep explainaton about prodigal will be given.
 
 First let's create a directory and a symbolic link of our contigs
 
