@@ -52,7 +52,7 @@ Running IDBA with Dac.fasta file:
 ```console
 [veraponcedeleon.1@u016 IDBA]$ nohup time ~/bin/idba/bin/idba_ud -r DacBet.fa -o DacBIDBA --pre_correction --num_threads 4 > idba.log &
 ```
-**This process requires from minutes to hrs to be completed I recommend use nohup and send the process to the background for running. Additionaly the time command is helpful to show us how long our process took.**
+**This process requires from minutes to hrs to be completed I recommend use nohup and send the process to the background for running. Additionally the time command is helpful to show us how long our process took.**
 
 *~ Means my home this is why some times you see this symbol in my commands.
 
