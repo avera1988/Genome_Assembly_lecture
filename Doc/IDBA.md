@@ -5,12 +5,13 @@
 ```console
 [veraponcedeleon.1@u016 Class_May_2019]$ mkdir IDBA
 [veraponcedeleon.1@u016 Class_May_2019]$ cd IDBA/
-[veraponcedeleon.1@u009 IDBA]$ ln -s ../TrimGalore/*30*fq .
+[veraponcedeleon.1@u009 IDBA]$ ln -s ../TrimGalore/*fq .
 ```
 IDBA uses a single fasta file to assembly, so the user needs to concatenate the pair fastq and convert it into a fasta single file; we can do it using the fq2fa from ~/bin/idba/bin/fq2fa: 
 ```console
 [veraponcedeleon.1@u016 IDBA]$ /home/veraponcedeleon.1/bin/idba/bin/fq2fa --merge DacBet.30_val_1.fq DacBet.30_val_2.fq DacBet.fa
 ```
+**In my case my fastq files are named as DacBet.30_val_1.fq DacBet.30_val_2.fq remember you need to use your own fastq files!!! If you are using the default trimGalored your files are named as: DacBet_val_1.fq DacBet_val_2.fq, check for these files when you run your data**
 
 Now we have all the elements to run IDBA_ud, let's check the help message
 ```console
