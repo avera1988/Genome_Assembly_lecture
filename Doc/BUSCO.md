@@ -108,7 +108,7 @@ optional arguments:
   -v, --version         Show this version and exit
   -h, --help            Show this help message and exit
 ```
-Basicaly we need the genome, the linage (orthologs seqs) the output and if our genome is in nucleotides or amino acids. As we have already predicted the amino acid sequences of our genome, we indicate -m prot this way BUSCO is not running augustus to predict genes.
+Basically we need the genome, the linage (it means the orthologs seqs) the output and if our genome is given as nucleotides (-m geno) or amino acids (-m prot). As we have already predicted the amino acid sequences of our genome, we indicate -m prot this way BUSCO is not running augustus to predict genes.
 ```console
 (base) [veraponcedeleon.1@unity-1 BUSCO]$ ~/bin/busco/scripts/run_BUSCO.py -i contig.1000.fa.amino.faa -m prot -l /fs/project/obcp/veraponcedelon.1/database/BUSCOS/bacteria_odb9 -o busco -c 4
 INFO	****************** Start a BUSCO 3.0.2 analysis, current time: 05/21/2019 16:28:15 ******************
