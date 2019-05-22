@@ -147,7 +147,7 @@ $ perl ../../../Genome_Assembly_lecture/Scripts/cambia_seqs_unalinea.pl contigs.
 An then we can trimm by length
 
 ```console
-(base) [veraponcedeleon.1@u032 comparaciones_IDBA_SPADES]$ perl ../../../Genome_Assembly_lecture/Scripts/trimm_len.pl contigs.one 1000 |sed 's/\t/_/g'> contigs.one.1000
+(base) [veraponcedeleon.1@u032 comparaciones_IDBA_SPADES]$ perl ../../../Genome_Assembly_lecture/Scripts/trimm_len.pl contigs.one 1000 |sed 's/\t_/g'> contigs.one.1000
 ```
 *AS the scritp keep a tab in the header we need to remove it with sed*
 
