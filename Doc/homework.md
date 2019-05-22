@@ -1,6 +1,6 @@
 # Final homework
 
-Aa a final homework please donwlonad the [Homework_reads.tar.gz](https://osu.box.com/s/4ydgkdp2h1cygzvxkvjsg0o21x5ira9n)
+As a final homework please download the [Homework_reads.tar.gz](https://osu.box.com/s/4ydgkdp2h1cygzvxkvjsg0o21x5ira9n)
 
 1. Decompress the file.
 2. Run fastQC and generate the .html plots
