@@ -139,3 +139,21 @@ NODE_8	8.031
 NODE_9	8.271
 NODE_10	7.563
 ```
+As in IDBA we can trimm those short contigs. Remember to convert into a new line the contigs.fasta
+
+```console
+$ perl ../../../Genome_Assembly_lecture/Scripts/cambia_seqs_unalinea.pl contigs.fasta > contigs.one.fasta
+```
+An then we can trimm by length
+
+```console
+(base) [veraponcedeleon.1@u032 comparaciones_IDBA_SPADES]$ perl ../../../Genome_Assembly_lecture/Scripts/trimm_len.pl contigs.one 1000 |sed 's/\t/_/g'> contigs.one.1000
+```
+*AS the scritp keep a tab in the header we need to remove it with sed*
+
+Now we can check the stats
+
+```console
+(base) [veraponcedeleon.1@u032 comparaciones_IDBA_SPADES]$ perl ../../../Genome_Assembly_lecture/Scripts/coverage.spades.pl contigs.one.1000
+contigs.one.1000 coverage=	8.558
+```
