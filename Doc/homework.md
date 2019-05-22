@@ -9,7 +9,7 @@ Aa a final homework please donwlonad the [Homework_reads.tar.gz](https://osu.box
 5. Run the assembly_stats and generate the statistics file for each assembly.
 6. Run the coverage_idba.pl and coverage_spades.pl.
 8. Trimm all the contigs less than 1000 nt using the trimm_len.pl contigs.fa 1000 > contigs.1000.fa. 
-7. Create a single folder (named as homework_STUDENT_NAME) and put all the assembled contigs and the coverage.txt files for each of your experiments (this means contigs.fa and contigs.one.1000.fa
+7. Create a single folder (named as homework_STUDENT_NAME for example: homework_ArturoVeraPonce) and put all the assembled contigs and the coverage.txt files for each of your experiments (this means contigs.fa and contigs.one.1000.fa
 from idba and contigs.fasta and contigs.one.1000.fasta from spades) into it, then produce a report in tab format with all the statistics (Genome_Assembly_lecture/Scripts/assembly-stats/assembly-stats  -t contigs1.fa contigs2.fa ...etc. > stats.final.tab).
 8. According to the statistics and the coverage select the best assembly and remove the others from this folder.
 9. Run prodigal and obtain the BUSCO completeness to this best assembly.  From the busco output folder (i.e run_busco) copy the short_summary_busco.txt into homework_STUDENT_NAME folder. At the end delete all the prodigal (faa, ffn, output) and busco files execpt the short_summary_busco file you have copied to the homework_STUDENT_NAME folder.
