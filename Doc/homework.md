@@ -23,4 +23,4 @@ from idba and contigs.fasta and contigs.one.1000.fasta from spades) into it, the
 14. Send your tar.gz file to veraponcedeleon.1@osu.edu (The compressed file should size between 1.5 to 2 Mb).
 
 
-## The deadline to submit you homework is Friday 31 11:59 pm, all homeworks send it after this time will no be reviewed.
+## The deadline to submit you homework is Friday May 31 11:59 pm, all homeworks getting after this time will no be reviewed.
