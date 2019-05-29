@@ -67,7 +67,7 @@ tar -xzvf bacteria_odb9.tar.gz
 
 you can run busco:
 
-*First take a look to the parameters
+*First take a look to the parameters*
 
 ```console
 (base) [veraponcedeleon.1@unity-1 BUSCO]$ ~/bin/busco/scripts/run_BUSCO.py -h
@@ -144,7 +144,7 @@ INFO	Results written in /fs/project/obcp/veraponcedelon.1/Class_May_2019/IDBA/Da
 ```
 *I am using 4 cpus this is why -c 4*
 
-**The result is given in the standar output (the screen) as:
+**The result is given in the standar output (the screen) as:**
 
 * INFO	Results:
 * INFO	C:95.2%[S:93.2%,D:2.0%],F:2.0%,M:2.8%,n:148
