@@ -152,7 +152,7 @@ An then we can trimm by length
 *As the scritp keep a tab in the header we need to remove it with sed*
 
 
-Now we can check the stats
+Now we can check the coverage stats
 
 ```console
 (base) [veraponcedeleon.1@u032 comparaciones_IDBA_SPADES]$ perl ../../../Genome_Assembly_lecture/Scripts/coverage.spades.pl contigs.one.1000
