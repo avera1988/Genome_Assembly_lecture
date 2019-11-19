@@ -23,5 +23,5 @@ $ git clone https://github.com/avera1988/Genome_Assembly_lecture.git
 
 ### Some interesting papers about genome assembly strategies are in [Literature](https://github.com/avera1988/Genome_Assembly_lecture/tree/master/literature)
 
-* Data example [Raw_reads_soft](https://osu.box.com/s/fwt94wix99q9fv3t78ni6ch0ph5hiy9r)
+* Data example [Raw_reads_soft](https://osu.box.com/s/y339l78mkhmurh72hgwvqeyv7495cj9p)
 
