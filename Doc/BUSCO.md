@@ -18,7 +18,7 @@ First let's create a directory and a symbolic link of our contigs
 total 0
 lrwxrwxrwx 1 veraponcedeleon.1 research-eeob-sabree 17 May 21 16:08 contig.1000.fa -> ../contig.1000.fa
 ```
-Now we need to predic the codifying sequences using prodigal like this
+Now we need to predict the codifying sequences using prodigal like this
 
 ```console
 (base) [veraponcedeleon.1@unity-1 BUSCO]$ prodigal -a contig.1000.fa.amino.faa -d contig.1000.fa.cds.ffn -o prodigal.out -i contig.1000.fa
@@ -67,7 +67,7 @@ tar -xzvf bacteria_odb9.tar.gz
 
 you can run busco:
 
-*First take a look to the parameters*
+*First take a look the parameters*
 
 ```console
 (base) [veraponcedeleon.1@unity-1 BUSCO]$ ~/bin/busco/scripts/run_BUSCO.py -h
@@ -231,7 +231,7 @@ INFO	BUSCO analysis done. Total running time: 8.01606297493 seconds
 INFO	Results written in /fs/project/obcp/veraponcedelon.1/Class_May_2019/IDBA/DacBQ22/DacB20/BUSCO/run_beta_bacteria_busco/
 ```
 
-As you see now the BUSCO completeness is less than the previous one, this is due to there are more orthologs to look. 
+As you see now the BUSCO completeness is less than the previous one, this is due to there are more orthologs to compare. 
 
 **Using this we can estimate that our assembly is between 93 - 96 % of completeness.**
 
