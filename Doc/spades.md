@@ -215,3 +215,7 @@ In this example there is none circular replicon but let's take a look into an E.
 As you can see there is a big graph and a circular one. This small one could be a plasmid. We can slect a contig and perform a BlastX to know if there is any gene related to replication or plasmid.
 
 ![Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/BandageBlast.png)
+
+After Blast search it seems this "cicular" graph has conjugative elements genes, suggesting a possible plasmid presence and assembly.
+
+![Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/Blast.png)
