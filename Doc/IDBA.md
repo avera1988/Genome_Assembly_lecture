@@ -100,6 +100,8 @@ perl /fs/project/obcp/veraponcedelon.1/Class_May_2019/scripts/assembly.stats.pl 
 /fs/project/obcp/veraponcedelon.1/Class_May_2019/scripts/assembly-stats/assembly-stats contig.fa > stats.assembly.txt
 ```
 
+## Obtain coverage information
+
 We can also see the coverage, as IDBA do not print the coverage in the conting we can extract it using a perl scritp. First let's take a look into an idba contig:
 
 ```console
