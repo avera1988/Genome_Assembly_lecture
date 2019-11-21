@@ -201,7 +201,9 @@ An then click to Draw graph
 
 It shows us the graphic representation of our assembly, we now can play and ask Bandage to show us for example all contigs with a coverage (deep) range between 5 and 20 X
 
+
+
 *Click to scope deep range and then set up the min and max to 5.0 and 20.0*
 
 
-[Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/bandageMod.png)
+![Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/bandageMod.png)
