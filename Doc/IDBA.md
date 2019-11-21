@@ -160,7 +160,7 @@ contig-100_9	24004	11.594
 (base) [veraponcedeleon.1@u009 DacBIdba]$ cd ..
 (base) [veraponcedeleon.1@u009 IDBA]$ mkdir DacBQ22
 (base) [veraponcedeleon.1@u009 IDBA]$ cd DacBQ22/
-(base) [veraponcedeleon.1@u009 DacBQ22]$ ln -s ../../TrimGalore/*22*fq .
+(base) [veraponcedeleon.1@u009 DacBQ22]$ ln -s ../../TrimGalore/*fq .
 (base) [veraponcedeleon.1@u009 DacBQ22]$ ~/bin/idba/bin/fq2fa --merge DacBet.22_val_1.fq DacBet.22_val_2.fq Dac.fasta
 (base) [veraponcedeleon.1@u009 DacBQ22]$ nohup ~/bin/idba/bin/idba_ud -o DacB20 -r Dac.fasta --num_threads 4 --pre_correction > idba.log &
 (base) [veraponcedeleon.1@u009 DacBQ22]$ cd DacB20/
@@ -243,7 +243,7 @@ Usage: perl ../../../scripts/trimm_len.pl fasta_file trimmm_value
 
 I am using a trimm value of 1000 due to the average gen of bacteria genes you can modify this parameter.
 
-Now we can compare the statistics of the original contig.one.fa and the contig.900.fa
+Now we can compare the statistics of the original contig.one.fa and the contig.1000.fa
 
 ```console
 (base) [veraponcedeleon.1@unity-1 DacB20]$ ../../../scripts/assembly-stats/assembly-stats contig.one.fa contig.1000.fa 
