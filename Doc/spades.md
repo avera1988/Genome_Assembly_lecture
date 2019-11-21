@@ -6,7 +6,7 @@
 ```console
 (base) [veraponcedeleon.1@u009 Class_May_2019]$ mkdir SPADES
 (base) [veraponcedeleon.1@u009 Class_May_2019]$ cd SPADES/
-(base) [veraponcedeleon.1@u009 SPADES]$ ln -s ../TrimGalore/*30*fq . .
+(base) [veraponcedeleon.1@u009 SPADES]$ ln -s ../TrimGalore/*fq . .
  ```
  We also need the PacBio files for the hybrid assembly so let's linked here
 ```console 
