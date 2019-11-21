@@ -158,3 +158,53 @@ Now we can check the coverage stats
 (base) [veraponcedeleon.1@u032 comparaciones_IDBA_SPADES]$ perl ../../../Genome_Assembly_lecture/Scripts/coverage.spades.pl contigs.one.1000
 contigs.one.1000 coverage=	8.558
 ```
+**Visualization of the assembly graph to detect circular replicons and quality value using Bandage**
+
+An advantage to use Spades as assembler is due to it gives us a file assembly_graph.fastg with all the nodes and edges of the graph
+
+```console
+(base) [veraponcedeleon.1@unity-1 spades]$ ~/bin/Bandage --help
+
+  ____                  _                  
+ |  _ \                | |                 
+ | |_) | __ _ _ __   __| | __ _  __ _  ___ 
+ |  _ < / _` | '_ \ / _` |/ _` |/ _` |/ _ \
+ | |_) | (_| | | | | (_| | (_| | (_| |  __/
+ |____/ \__,_|_| |_|\__,_|\__,_|\__, |\___|
+                                 __/ |     
+                                |___/      
+Version: 0.8.1
+
+Usage:    Bandage <command> [options]
+          
+Commands: <blank>      Launch the Bandage GUI
+          load         Launch the Bandage GUI and load a graph file
+          info         Display information about a graph
+          image        Generate an image file of a graph
+          querypaths   Output graph paths for BLAST queries
+          reduce       Save a subgraph of a larger graph
+          
+Options:  --help       View this help message
+          --helpall    View all command line settings
+          --version    View Bandage version number
+          
+Online Bandage help: https://github.com/rrwick/Bandage/wiki
+```
+We can load the  assembly_graph.fastg
+
+```console
+(base) [veraponcedeleon.1@unity-1 spades]$ ~/bin/Bandage l assembly_graph.fastg
+```
+An then click to Draw graph
+
+![Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/Bandage.png)
+
+It shows us the graphic representation of our assembly, we now can play and ask Bandage to show us for example all contigs with a coverage (deep) range between 5 and 20 X
+
+*Click to scope deep range*
+
+[Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/Bandage2.png)
+
+*And then set up the min and max to 5.0 and 20.0*
+
+[Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/Bandage3.png)
