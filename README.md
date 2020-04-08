@@ -2,7 +2,6 @@
 
 ## Here you will find the info, code and presentations of Genome assembly lecture.
 
-* This is the version 2 of this document. It was done to CBG-IPN Nov 2019.
 
 ### The protocols of this lecture are in [Doc](https://github.com/avera1988/Genome_Assembly_lecture/tree/master/Doc) section
 
@@ -23,5 +22,5 @@ $ git clone https://github.com/avera1988/Genome_Assembly_lecture.git
 
 ### Some interesting papers about genome assembly strategies are in [Literature](https://github.com/avera1988/Genome_Assembly_lecture/tree/master/literature)
 
-* Data example [Raw_reads_soft](https://osu.box.com/s/y339l78mkhmurh72hgwvqeyv7495cj9p)
+* Data example [Raw_reads](https://osu.box.com/s/y339l78mkhmurh72hgwvqeyv7495cj9p)
 
