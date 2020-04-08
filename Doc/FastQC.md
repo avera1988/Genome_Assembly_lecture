@@ -2,7 +2,7 @@
 
 1. Download the Data folder [Data](https://osu.box.com/s/fwt94wix99q9fv3t78ni6ch0ph5hiy9r)
 
--This is a small data set from [paper](https://academic.oup.com/gbe/article/9/9/2237/4091605)
+-This is a small data set from [paper](https://aem.asm.org/content/86/8/e00091-20)
 
 2. Open a terminal
 3. Create a folder named FastQC
@@ -10,29 +10,34 @@
 5. Decompress the tar ball file with tar command
 
 ```console
-[avera@debian CBG_IPN]$ mkdir FastQC
-[avera@debian CBG_IPN]$ ls -lrth
+[avera]$ mkdir FastQC
+[avera]$ ls -lrth
 total 4.0K
 drwxr-xr-x 2 avera avera 4.0K May 16 11:51 FastQC
-[avera@debian CBG_IPN]$ cd FastQC/
-[avera@debian FastQC]$ mv ../Raw_reads_soft.tar.gz  .
-[avera@debian FastQC]$ tar -xzvf Raw_reads_soft.tar.gz
-Raw_reads_soft/
-Raw_reads_soft/Illumina/
-Raw_reads_soft/Illumina/DacBet_1.fastq
-Raw_reads_soft/Illumina/DacBet_2.fastq
-Raw_reads_soft/PacBio/
-Raw_reads_soft/PacBio/DacBeta.pacBio.fastq
+[avera@]$ cd FastQC/
+[avera@]$ mv ../Raw_reads.tar.gz  .
+[avera@]$ tar -xzvf Raw_reads.tar.gz 
+Raw_reads/
+Raw_reads/Illumina/
+Raw_reads/Illumina/214_R1.fastq
+Raw_reads/Illumina/214_R2.fastq
+Raw_reads/Illumina/224_R1.fastq
+Raw_reads/Illumina/224_R2.fastq
+Raw_reads/Illumina/519_R1.fastq
+Raw_reads/Illumina/519_R2.fastq
+Raw_reads/Illumina/51_R1.fastq
+Raw_reads/Illumina/51_R2.fastq
+
 ```
 ### Now we can use FastQC by calling it with:
 ```console
-[avera@debian FastQC]$ fastqc
+[avera]$ fastqc
 ```
 ![Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/fastqcconsole.png)
 
 **Graphic version is fine for one file, but what happens when we have to deal with multiple files, well you can use the command line**
 ```console
-[avera@debian FastQC]$ fastqc -h
+[avera]$ fastqc -h
 
             FastQC - A high throughput sequence QC analysis tool
 
@@ -44,27 +49,27 @@ SYNOPSIS
            [-c contaminant file] seqfile1 .. seqfileN
 ```
 
-**Enter to ~FastQC/Raw_reads_soft/Illumina/**
+**Enter to ~FastQC/Raw_reads/Illumina/**
 
 ```console
-[veraponcedeleon.1@unity-1 Illumina]$ pwd
-/fs/project/obcp/veraponcedelon.1/Class_May_2019/FastQC/Raw_reads_soft/Illumina
+$ ls
+214_R1.fastq  214_R2.fastq  224_R1.fastq  224_R2.fastq  519_R1.fastq  519_R2.fastq  51_R1.fastq  51_R2.fastq
 ```
 
 Let's run fastQC for these two files
  ```console
-[veraponcedeleon.1@unity-1 Illumina]$ fastqc -t 4 -f fastq DacBet_1.fastq DacBet_2.fastq
+[avera]$ fastqc -t 4 -f fastq 51_R1.fastq 51_R2.fastq
  ```
- Check the results 
+ Check the results 	
  ```Console
- [veraponcedeleon.1@unity-1 Illumina]$ ls
-DacBet_1.fastq  DacBet_1_fastqc.html  DacBet_1_fastqc.zip  DacBet_2.fastq  DacBet_2_fastqc.html  DacBet_2_fastqc.zip
+ [avera]$ ls
+
  ```
  You can open the fastQC report using a web browser, in my case firefox
  ```console
-[veraponcedeleon.1@unity-1 Illumina]$ firefox DacBet_1_fastqc.html.html
+[avera]$ firefox 51*html
  ```
- ### Exercise 1 Produce all fastQC reports for all Illumina and PacBio fastq from Raw_reads_soft files using the command line.
+ ### Exercise 1 Produce all fastQC reports for all Illumina fastq from Raw_reads_soft files using the command line.
  
  
  
