@@ -1,6 +1,7 @@
 # Instructions to create FastQC reports using multiple fastq files
 
-1. Download the Data folder [Data](https://osu.box.com/s/fwt94wix99q9fv3t78ni6ch0ph5hiy9r)
+1. Conect to 148.204.124.131 server and copy the Illumina files to your home/directory
+Download the Data folder [Data](https://osu.box.com/s/fwt94wix99q9fv3t78ni6ch0ph5hiy9r)
 
 -This is a small data set from [paper](https://aem.asm.org/content/86/8/e00091-20)
 
