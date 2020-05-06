@@ -62,38 +62,42 @@ nohup time idba_ud -r 51.fasta -o 51.idba.dir --pre_correction --num_threads 4 >
 
 ###As soon as finished IDBA has created a directory (in this case 51.idba.dir ) and the log from nohup command "idba.log.
 ```console
-$ 
+$ ls
+51.fasta  51.idba.dir  51_R1_val_1.fq  51_R2_val_2.fq  idba.log 
+$ cd 51.idba.dir/
+$ ls
+align-100-0  align-40  align-80  contig-100.fa  contig-40.fa  contig-80.fa  end           graph-20.fa  graph-60.fa  kmer                local-contig-40.fa  local-contig-80.fa  scaffold.fa
+align-20     align-60  begin     contig-20.fa   contig-60.fa  contig.fa     graph-100.fa  graph-40.fa  graph-80.fa  local-contig-20.fa  local-contig-60.fa  log
 ```
  **Take a look into the basic assembly statistics**
 
 We can run the assembly.stats.pl script form scripts directory. 
 ```console
-[veraponcedeleon.1@u005 DacBIdba]$ perl /fs/project/obcp/veraponcedelon.1/Class_May_2019/scripts/assembly.stats.pl contig.fa
+perl ~/Genome_Assembly_lecture/Scripts/assembly.stats.pl contig.fa 
 Sample_ID	Genome	Contigs	Mean	Median	N50	Largest	GC(%)	N_count	N(%)	Gap_count
-contig.fa	3525841	539	6541	4498	10950	34671	62.76		0.00	0
-
+contig.fa	3722537	313	11893	847	72960	219803	30.45		0.00	0 
 ```
 
 These are the basic stats. Also using a more complex scritp from https://github.com/sanger-pathogens/assembly-stats/ we can detect all Nx parameters
 ```console
-[veraponcedeleon.1@u005 DacBIdba]$ /fs/project/obcp/veraponcedelon.1/Class_May_2019/scripts/assembly-stats/assembly-stats contig.fa
+[veraponcedeleon.1@u005 DacBIdba]$ 
+~/Genome_Assembly_lecture/Scripts/assembly-stats/assembly-stats contig.fa 
 stats for contig.fa
-sum = 3525841, n = 539, ave = 6541.45, largest = 34671
-N50 = 10950, n = 110
-N60 = 8933, n = 146
-N70 = 7001, n = 191
-N80 = 4971, n = 250
-N90 = 3237, n = 337
-N100 = 389, n = 539
+sum = 3722537, n = 313, ave = 11893.09, largest = 219803
+N50 = 72960, n = 16
+N60 = 51801, n = 22
+N70 = 40399, n = 30
+N80 = 27167, n = 41
+N90 = 11091, n = 63
+N100 = 211, n = 313
 N_count = 0
-Gaps = 0
+Gaps = 0 
 ```
 
 The output of these scripts can be parsed into a txt file:
 
 ```console
-perl /fs/project/obcp/veraponcedelon.1/Class_May_2019/scripts/assembly.stats.pl contig.fa > stats.perl.assembly.txt
-/fs/project/obcp/veraponcedelon.1/Class_May_2019/scripts/assembly-stats/assembly-stats contig.fa > stats.assembly.txt
+Genome_Assembly_lecture/Scripts/assembly-stats/assembly-stats contig.fa > contigs.stats.txt
 ```
 
 ## Obtain coverage information
@@ -101,8 +105,8 @@ perl /fs/project/obcp/veraponcedelon.1/Class_May_2019/scripts/assembly.stats.pl 
 We can also see the coverage, as IDBA do not print the coverage in the conting we can extract it using a perl scritp. First let's take a look into an idba contig:
 
 ```console
-(base) [veraponcedeleon.1@u009 DacBIdba]$ head -1 contig.fa 
->contig-100_0 length_34647 read_count_4234
+$ head -1 contig.fa 
+>contig-100_0 length_219803 read_count_133621
 ```
 In this header we have the contig length and the number of reads per each contig. 
 
@@ -126,7 +130,7 @@ As we have all the elements to calculate the coverage in the conting header let'
 **First we need to transforme the contigs.fa into a single lane fasta file, it means a header and the next line the sequnce. We can do it using the perl scripts/cambia_seqs_unalinea.pl
 
 ```console
-(base) [veraponcedeleon.1@u009 DacBIdba]$ perl ~/scripts/cambia_seqs_unalinea.pl contig.fa > contig.one.fa
+$ perl ~/scripts/cambia_seqs_unalinea.pl contig.fa > contig.one.fa
 ```
 
 Then let's apply the ~/scripts/covergae.idba.pl to these new file. As a result it will give us the mean coverage of the assembly
