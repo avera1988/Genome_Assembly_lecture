@@ -1,13 +1,16 @@
 # Instructions to create FastQC reports using multiple fastq files
 
-1. Conect to 148.204.124.131 server and copy the Illumina files to your home/directory
-Download the Data folder [Data](https://osu.box.com/s/fwt94wix99q9fv3t78ni6ch0ph5hiy9r)
+1. Conect to 148.204.124.131 server and copy the Raw_reads.tar.gz tarball files to your /home/directory/
+```console
+$ cp /export/home/avera2020/GenomeAssembly.May2020/Raw_reads.tar.gz /home/myhomedir
+```
+*If you are not able to access the server, download the Data folder [Data](https://osu.box.com/s/tjk874n5k2hgwag64nnl40x4njv5qp9i) to your computer.
 
--This is a small data set from [paper](https://aem.asm.org/content/86/8/e00091-20)
+-This is a small genome data set from [paper](https://aem.asm.org/content/86/8/e00091-20)
 
 2. Open a terminal
 3. Create a folder named FastQC
-4. Move the Data folder into FastQC directory
+4. Move the Raw_reads.tar.gz file into the new FastQC directory
 5. Decompress the tar ball file with tar command
 
 ```console
@@ -32,9 +35,16 @@ Raw_reads/Illumina/51_R2.fastq
 ```
 ### Now we can use FastQC by calling it with:
 ```console
-[avera]$ fastqc
+$ fastqc
 ```
 ![Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/fastqcconsole.png)
+
+*Before call fastqc you need to be sure it is instaled if are in server you can load all the software we will use by doing
+
+```console
+$ source /export/home/avera2020/GenomeAssembly.May2020/programsPATH.sh
+```
+*Otherwise you can install all programs using Bioconda
 
 **Graphic version is fine for one file, but what happens when we have to deal with multiple files, well you can use the command line**
 ```console
@@ -70,7 +80,7 @@ Let's run fastQC for these two files
  ```console
 [avera]$ firefox 51*html
  ```
- ### Exercise 1 Produce all fastQC reports for all Illumina fastq from Raw_reads_soft files using the command line.
+ ### Exercise 1 Produce all fastQC reports for all Illumina fastq files using the command line.
  
  
  
