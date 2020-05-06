@@ -1,42 +1,85 @@
 ## Quality filter with trim galore
 
-### Create a TrimGalore directory, copy there the illumina fastq.gz files and decompress all files
+### Create a TrimGalore directory, copy there the illumina files
 
 ```console
-[avera@debian FastQC]$ mkdir TrimGalore
-[avera@debian FastQC]$ cd TrimGalore/
-[avera@debian TrimGalore]$ cp ../Raw_reads/Illumina/*.fastq .
-[avera@debian TrimGalore]$ ls -lrth
--rw-r--r-- 1 avera avera  84M May 16 16:01 DacBet_1.fastq
--rw-r--r-- 1 avera avera  84M May 16 16:01 DacBet_2.fastq
+avera@mark3$ mkdir TrimGalore
+ln -s ../51_*fastq .
+```
+*ln -s creates a "soft" link it means a shortcut to the file this is useful to save space
+
+```console
+$ ls -l
+total 0
+lrwxrwxrwx 1 avera avera 14 May  6 18:33 51_R1.fastq -> ../51_R1.fastq
+lrwxrwxrwx 1 avera avera 14 May  6 18:33 51_R2.fastq -> ../51_R2.fastq
 ```
 
 **Let's take a look into the DacBet files**
 
 ```console
-[avera@debian TrimGalore]$ head -5 DacBet_1.fastq 
-@MG00HS13:1213:HJ5J3BCXY:1:1101:8612:2599
-GAATTCCGCCTGACGGCAAACGGCGATAGCCTGGAAGCCCTCGCCAGGGCACTTGCCGTGGATGGCAATTACACCCTCAAGGCGGGCAGCATCGACCGCTT
+head -4 51_R1.fastq
+avera@mark3:TrimGalore$ @SN1052:253:C5NPEACXX:8:1101:5987:1956 1:N:0:79
+NAGTAATAACAGTGCGGGATGACATAATGAACTACCTTATTGACCAGGGACTTGAAAAAGGAACAGCATTTAAAATAATGGAGTTTGTAAGAAAAGGTAA
 +
-DDDDDIIIIIIIIHHIIIIIIIIIIIIGHHIIIIIIIHIIIHHIIIIFHIIHIIHHIDHIHHHIHHIIGIGIIIIHHIIFGHCHDHHGIIGEHHHHIDHHH
-@MG00HS13:1213:HJ5J3BCXY:1:1101:13226:2502
-[avera@debian TrimGalore]$ head -5 DacBet_2.fastq 
-@MG00HS13:1213:HJ5J3BCXY:1:1101:8612:2599
-CGAGAGTTCGAAGTTGCGCGCGCTGCTTTCGCCCCCCGGGAACATCATGGAACCACGCACCCGCCCCTTGAGGGTCGAATCCGGCGCGATCACCACATTGG
+#1=BDDDFHGGHFHIJJJJJJJJJIJJIIJJIIJIJIJIJJIIIJIIIIIJJJIJJIJIJHHHHFFFEFEDEEDC>CCDDACDACCD?ADCCCCCDD>>C
+vera@mark3:TrimGalore$ head -4 51_R2.fastq
+@SN1052:253:C5NPEACXX:8:1101:5987:1956 2:N:0:79
+CTCTGGCATACATTTCCACTATAATTTCACATATTGCCATTTCAGCTTTTTTCTTTACATCAAGTTTTGGTTCTTTGCTCAATACTGCCAGATGTTCTTT
 +
-DBADDGIIIIIIIEHIIIIIIIIIIGHIIIIIHIIIIIIIGHIIIHHIGIHHIHIHICHDHHHIIHIHEHHHIHIIIHIIIIIDHIHHIDHGHHHHHEHHH
-@MG00HS13:1213:HJ5J3BCXY:1:1101:13226:2502
+CCCFFFFFHHHGHJJJJIIJJIJIJFJJJJJJJJJJJJJJIDFIIJJJJJGHIIJJGGIHIIJJGIEIEIDHIJIJHHHHGHFFFFFFEECEEEDDEDCD
 ```
 **Now we can run TrimGalore command**
 
 ```console
-[avera@debian TrimGalore]$ /home/avera/bin/TrimGalore-0.6.0/trim_galore -j 4 -q 30 --path_to_cutadapt /home/avera/.local/bin/cutadapt --fastqc --paired DacBet_1.fastq DacBet_2.fastq
+$ trim_galore --paired -j 4 -q 30 --fastqc 51_R1.fastq 51_R2.fastq
 ```
 **And compare the sequences from the original files with these trimmed ones**
 
  ```console
- [avera@debian TrimGalore]$ firefox DacBet_1_val_1_fastqc.html
- [avera@debian TrimGalore]$ firefox DacBet_2_val_2_fastqc.html
+$ ls -lrth
+total 1.2G
+lrwxrwxrwx 1 avera avera   14 May  6 18:33 51_R1.fastq -> ../51_R1.fastq
+lrwxrwxrwx 1 avera avera   14 May  6 18:33 51_R2.fastq -> ../51_R2.fastq
+-rw-rw-rw- 1 avera avera 3.4K May  6 18:35 51_R1.fastq_trimming_report.txt
+-rw-rw-rw- 1 avera avera 563M May  6 18:35 51_R2_val_2.fq
+-rw-rw-rw- 1 avera avera 573M May  6 18:35 51_R1_val_1.fq
+-rw-rw-rw- 1 avera avera 3.6K May  6 18:35 51_R2.fastq_trimming_report.txt
+-rw-rw-rw- 1 avera avera 398K May  6 18:35 51_R1_val_1_fastqc.zip
+-rw-rw-rw- 1 avera avera 635K May  6 18:35 51_R1_val_1_fastqc.html
+-rw-rw-rw- 1 avera avera 413K May  6 18:36 51_R2_val_2_fastqc.zip
+-rw-rw-rw- 1 avera avera 643K May  6 18:36 51_R2_val_2_fastqc.html
  ```
  
- ### Exercise 2 Run TrimGalore to all Illumina fastq files using a quality filter of 22,26 and 30 save the results in different files. Is there any diffence in the fastQC plots?
+ ### Exercise 2 Run TrimGalore to all Illumina fastq files 
+ 
+ **Is there any way to do this automatically?
+ 
+ The answer is yes we need to use a *for* loop
+ 
+ Let's create a symbolic links to all files
+ 
+ ```console
+$ ln -s ../*fastq .
+$ ls -l
+total 0
+lrwxrwxrwx 1 avera avera 15 May  6 18:39 214_R1.fastq -> ../214_R1.fastq
+lrwxrwxrwx 1 avera avera 15 May  6 18:39 214_R2.fastq -> ../214_R2.fastq
+lrwxrwxrwx 1 avera avera 15 May  6 18:39 224_R1.fastq -> ../224_R1.fastq
+lrwxrwxrwx 1 avera avera 15 May  6 18:39 224_R2.fastq -> ../224_R2.fastq
+lrwxrwxrwx 1 avera avera 15 May  6 18:39 519_R1.fastq -> ../519_R1.fastq
+lrwxrwxrwx 1 avera avera 15 May  6 18:39 519_R2.fastq -> ../519_R2.fastq
+lrwxrwxrwx 1 avera avera 14 May  6 18:39 51_R1.fastq -> ../51_R1.fastq
+lrwxrwxrwx 1 avera avera 14 May  6 18:39 51_R2.fastq -> ../51_R2.fastq
+ ```
+ Then the loop:
+ 
+ ```console
+ $ for i in *.fastq; do time trim_galore -j 4 -q 30 --fastqc $i;done
+ ```
+ 
+ Now we have all reads trimmed we can compare the html reports
+
+```console
+$ ls -l
+```
