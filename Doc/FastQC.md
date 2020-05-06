@@ -14,13 +14,13 @@ $ cp /export/home/avera2020/GenomeAssembly.May2020/Raw_reads.tar.gz /home/myhome
 5. Decompress the tar ball file with tar command
 
 ```console
-[avera]$ mkdir FastQC
-[avera]$ ls -lrth
+$ mkdir FastQC
+$ ls -lrth
 total 4.0K
 drwxr-xr-x 2 avera avera 4.0K May 16 11:51 FastQC
-[avera@]$ cd FastQC/
-[avera@]$ mv ../Raw_reads.tar.gz  .
-[avera@]$ tar -xzvf Raw_reads.tar.gz 
+$ cd FastQC/
+$ mv ../Raw_reads.tar.gz  .
+$ tar -xzvf Raw_reads.tar.gz 
 Raw_reads/
 Raw_reads/Illumina/
 Raw_reads/Illumina/214_R1.fastq
@@ -42,13 +42,14 @@ $ fastqc
 *Before call fastqc you need to be sure it is instaled if are in server you can load all the software we will use by doing*
 
 ```console
-$ source /export/home/avera2020/GenomeAssembly.May2020/programsPATH.sh
+$ conda activate GenomeAssemblyModule
+(GenomeAssemblyModule) $
 ```
 *Otherwise you can install all programs using Bioconda*
 
 **Graphic version is fine for one file, but what happens when we have to deal with multiple files, well you can use the command line**
 ```console
-[avera]$ fastqc -h
+$ fastqc -h
 
             FastQC - A high throughput sequence QC analysis tool
 
@@ -69,17 +70,15 @@ $ ls
 
 Let's run fastQC for these two files
  ```console
-[avera]$ fastqc -t 4 -f fastq 51_R1.fastq 51_R2.fastq
+$ fastqc -t 4 -f fastq 51_R1.fastq 51_R2.fastq
  ```
  Check the results 	
  ```Console
- [avera]$ ls
+ $ ls
 
  ```
- You can open the fastQC report using a web browser, in my case firefox
- ```console
-[avera]$ firefox 51*html
- ```
+ You can open the fastQC report using a web browser like Firefox or Chrome
+ 
  ### Exercise 1 Produce all fastQC reports for all Illumina fastq files using the command line.
  
  
