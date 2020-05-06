@@ -1,16 +1,16 @@
 # Genome assembly using IDBA_UD assembler
 
-### First we need to create a directory named IDBA and move the TrimGalore filtred DacBet with a quality value (q > 30) fastq files.
+### First we need to create a directory named IDBA and move the TrimGalore filtred fastq files.
 **As fastq files sometimes are quite large, it is recommendable to use a symbolic (soft) link instead a real (hard) copy**
 ```console
-[veraponcedeleon.1@u016 Class_May_2019]$ mkdir IDBA
-[veraponcedeleon.1@u016 Class_May_2019]$ cd IDBA/
-[veraponcedeleon.1@u009 IDBA]$ ln -s ../TrimGalore/DacBet.30_val_1.fq .
-[veraponcedeleon.1@u009 IDBA]$ ln -s ../TrimGalore/DacBet.30_val_2.fq .
+$ mkdir IDBA
+$ cd IDBA/
+$ ln -s ../51_val_1.fq .
+$ ln -s ../51_val_2.fq .
 ```
 IDBA uses a single fasta file to assembly, so the user needs to concatenate the pair fastq and convert it into a fasta single file; we can do it using the fq2fa from ~/bin/idba/bin/fq2fa: 
 ```console
-[veraponcedeleon.1@u016 IDBA]$ /home/veraponcedeleon.1/bin/idba/bin/fq2fa --merge DacBet.30_val_1.fq DacBet.30_val_2.fq DacBet.fa
+[veraponcedeleon.1@u016 IDBA]$ fq2fa --merge 51_val_1.fq 51_val_2.fq
 ```
 **In my case my fastq files are named as DacBet.30_val_1.fq DacBet.30_val_2.fq remember you need to use your own fastq files!!! If you are using the default trimGalored your files are named as: DacBet_val_1.fq DacBet_val_2.fq, check for these files when you run your data**
 
