@@ -75,7 +75,7 @@ lrwxrwxrwx 1 avera avera 14 May  6 18:39 51_R2.fastq -> ../51_R2.fastq
  Then the loop:
  
  ```console
- $ for i in *.fastq; do time trim_galore -j 4 -q 30 --fastqc $i;done
+ $ for i in *.fastq; do trim_galore -j 4 -q 30 --fastqc $i;done
  ```
  
  Now we have all reads trimmed we can compare the html reports
