@@ -82,5 +82,13 @@ lrwxrwxrwx 1 avera avera 14 May  6 18:39 51_R2.fastq -> ../51_R2.fastq
  Now we have all reads trimmed we can compare the html reports
 
 ```console
-$ ls -l
+$ ls
+214_R1.fastq                      214_R2_trimmed_fastqc.zip         224_R2.fastq_trimming_report.txt  519_R1_trimmed.fq                 51_R1_trimmed_fastqc.html
+214_R1.fastq_trimming_report.txt  214_R2_trimmed.fq                 224_R2_trimmed_fastqc.html        519_R2.fastq                      51_R1_trimmed_fastqc.zip
+214_R1_trimmed_fastqc.html        224_R1.fastq                      224_R2_trimmed_fastqc.zip         519_R2.fastq_trimming_report.txt  51_R1_trimmed.fq
+214_R1_trimmed_fastqc.zip         224_R1.fastq_trimming_report.txt  224_R2_trimmed.fq                 519_R2_trimmed_fastqc.html        51_R2.fastq
+214_R1_trimmed.fq                 224_R1_trimmed_fastqc.html        519_R1.fastq                      519_R2_trimmed_fastqc.zip         51_R2.fastq_trimming_report.txt
+214_R2.fastq                      224_R1_trimmed_fastqc.zip         519_R1.fastq_trimming_report.txt  519_R2_trimmed.fq                 51_R2_trimmed_fastqc.html
+214_R2.fastq_trimming_report.txt  224_R1_trimmed.fq                 519_R1_trimmed_fastqc.html        51_R1.fastq                       51_R2_trimmed_fastqc.zip
+214_R2_trimmed_fastqc.html        224_R2.fastq                      519_R1_trimmed_fastqc.zip         51_R1.fastq_trimming_report.txt   51_R2_trimmed.fq
 ```
