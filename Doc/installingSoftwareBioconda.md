@@ -7,12 +7,12 @@ $ curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 $ sh Miniconda3-latest-Linux-x86_64.sh
 ```
 
-After installation you need to add the Bioconda chanel to the list
+After installation you need to add the Bioconda channel to the channel list
 
 ```console
-$ conda config --add channels defaults
-$ conda config --add channels bioconda
-$ conda config --add channels conda-forge
+conda config --add channels defaults
+conda config --add channels bioconda
+conda config --add channels conda-forge
 ```
 
 Now you can install all prgrams using the GenomeAssemblyModuleEnv.yml file from the [Scripts](https://github.com/avera1988/Genome_Assembly_lecture/tree/master/Scripts) folder
@@ -28,4 +28,4 @@ Activate the environment
 $ conda activate GenomeAssemblyModule
 ```
 
-All software will be instaled!
+**All software will be instaled and loaded!**
