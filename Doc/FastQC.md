@@ -74,10 +74,23 @@ $ fastqc -t 4 -f fastq 51_R1.fastq 51_R2.fastq
  ```
  Check the results 	
  ```Console
- $ ls
+$ ls -l
+total 13256716
+-rw-r--r-- 1 avera avera 2125811128 Apr  8 19:17 214_R1.fastq
+-rw-r--r-- 1 avera avera 2125811128 Apr  8 19:17 214_R2.fastq
+-rw-r--r-- 1 avera avera 2086066162 Apr  8 19:17 224_R1.fastq
+-rw-r--r-- 1 avera avera 2086066162 Apr  8 19:17 224_R2.fastq
+-rw-r--r-- 1 avera avera 1888443833 Apr  8 19:17 519_R1.fastq
+-rw-r--r-- 1 avera avera 1888443833 Apr  8 19:17 519_R2.fastq
+-rw-r--r-- 1 avera avera  686064328 Apr  8 19:17 51_R1.fastq
+-rw-rw-rw- 1 avera avera     621267 May  6 16:56 51_R1_fastqc.html
+-rw-rw-rw- 1 avera avera     411389 May  6 16:56 51_R1_fastqc.zip
+-rw-r--r-- 1 avera avera  686064328 Apr  8 19:17 51_R2.fastq
+-rw-rw-rw- 1 avera avera     627128 May  6 16:56 51_R2_fastqc.html
+-rw-rw-rw- 1 avera avera     424579 May  6 16:56 51_R2_fastqc.zip 
 
  ```
- You can open the fastQC report using a web browser like Firefox or Chrome
+ You can open the fastQC report  51_R2_fastqc.html using a web browser like Firefox or Chrome
  
  ### Exercise 1 Produce all fastQC reports for all Illumina fastq files using the command line.
  
