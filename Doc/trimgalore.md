@@ -77,6 +77,7 @@ lrwxrwxrwx 1 avera avera 14 May  6 18:39 51_R2.fastq -> ../51_R2.fastq
  ```console
  $ for i in *.fastq; do trim_galore -j 4 -q 30 --fastqc $i;done
  ```
+ *This [cheatsheet](https://devhints.io/bash) you can find more useful bash commands and loops*
  
  Now we have all reads trimmed we can compare the html reports
 
