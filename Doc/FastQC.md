@@ -4,7 +4,7 @@
 ```console
 $ cp /export/home/avera2020/GenomeAssembly.May2020/Raw_reads.tar.gz /home/myhomedir
 ```
-*If you are not able to access the server, download the Data folder [Data](https://osu.box.com/s/tjk874n5k2hgwag64nnl40x4njv5qp9i) to your computer.
+*If you are not able to access the server, download the Data folder [Data](https://osu.box.com/s/tjk874n5k2hgwag64nnl40x4njv5qp9i) to your computer.*
 
 -This is a small genome data set from [paper](https://aem.asm.org/content/86/8/e00091-20)
 
@@ -39,12 +39,12 @@ $ fastqc
 ```
 ![Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/fastqcconsole.png)
 
-*Before call fastqc you need to be sure it is instaled if are in server you can load all the software we will use by doing
+*Before call fastqc you need to be sure it is instaled if are in server you can load all the software we will use by doing*
 
 ```console
 $ source /export/home/avera2020/GenomeAssembly.May2020/programsPATH.sh
 ```
-*Otherwise you can install all programs using Bioconda
+*Otherwise you can install all programs using Bioconda*
 
 **Graphic version is fine for one file, but what happens when we have to deal with multiple files, well you can use the command line**
 ```console
