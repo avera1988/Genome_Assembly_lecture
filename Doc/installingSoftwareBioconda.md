@@ -50,8 +50,21 @@ $ ln -s Bandage.dir/Bandage .
 ```
 5. Test Bandage
 ```console
+$ ./Bandage --help
 
+  ____                  _                  
+ |  _ \                | |                 
+ | |_) | __ _ _ __   __| | __ _  __ _  ___ 
+ |  _ < / _` | '_ \ / _` |/ _` |/ _` |/ _ \
+ | |_) | (_| | | | | (_| | (_| | (_| |  __/
+ |____/ \__,_|_| |_|\__,_|\__,_|\__, |\___|
+                                 __/ |     
+                                |___/      
+Version: 0.8.1
+
+Usage:    Bandage <command> [options]
 ```
+
 
 Activate the environment
 
