@@ -15,7 +15,7 @@ lrwxrwxrwx 1 avera avera 14 May  6 18:33 51_R1.fastq -> ../51_R1.fastq
 lrwxrwxrwx 1 avera avera 14 May  6 18:33 51_R2.fastq -> ../51_R2.fastq
 ```
 
-**Let's take a look into the DacBet files**
+**Let's take a look into the fastq files**
 
 ```console
 head -4 51_R1.fastq
