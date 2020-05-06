@@ -53,7 +53,7 @@ lrwxrwxrwx 1 avera avera   14 May  6 18:33 51_R2.fastq -> ../51_R2.fastq
  
  ### Exercise 2 Run TrimGalore to all Illumina fastq files 
  
- **Is there any way to do this automatically?
+ **Is there any way to do this automatically?**
  
  The answer is yes we need to use a *for* loop
  
