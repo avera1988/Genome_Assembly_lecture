@@ -64,6 +64,12 @@ Version: 0.8.1
 
 Usage:    Bandage <command> [options]
 ```
+*Bandage requires Qt 5.2 or later to run, which is included on many modern Linux distributions.
+
+*If it is not already installed, you can find it through your package manager or from the Qt website: http://www.qt.io/download-open-source/*
+
+*Ubuntu:*
+sudo apt-get install qt5-default
 
 
 Activate the environment
