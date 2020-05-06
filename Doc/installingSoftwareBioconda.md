@@ -28,4 +28,4 @@ Activate the environment
 $ conda activate GenomeAssemblyModule
 ```
 
-**All software will be instaled and loaded!**
+**All software will be installed and loaded!**
