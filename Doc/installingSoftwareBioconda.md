@@ -22,6 +22,37 @@ $ conda create -f GenomeAssemblyModuleEnv.yml
 ```
 *It takes a while to install*
 
+**As there is a problem with Bandage software running from Bioconda so we need to install it manualy**
+
+1. Go to your GenomeAssemblyModule bin directory and create a directory named Bandage.dir 
+
+```console
+$ cd ~/miniconda3/envs/GenomeAssemblyModule/bin/
+$ mkdir Bandage.dir
+$ cd Bandage.dir/
+```
+
+2. Download the binary compiled file from [Bandage](http://rrwick.github.io/Bandage/) website
+
+```console
+$ wget https://github.com/rrwick/Bandage/releases/download/v0.8.1/Bandage_Ubuntu_dynamic_v0_8_1.zip
+```
+3. Unzip the binary file
+
+```console
+$ unzip Bandage_Ubuntu_dynamic_v0_8_1.zip
+```
+4. Create a symbolic link to the bin directory
+
+```console
+$ cd ..
+$ ln -s Bandage.dir/Bandage .
+```
+5. Test Bandage
+```console
+
+```
+
 Activate the environment
 
 ```console
