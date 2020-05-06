@@ -19,7 +19,7 @@ $ ls -lrth
 total 4.0K
 drwxr-xr-x 2 avera avera 4.0K May 16 11:51 FastQC
 $ cd FastQC/
-$ mv ../Raw_reads.tar.gz  .
+$ cp ../Raw_reads.tar.gz  .
 $ tar -xzvf Raw_reads.tar.gz 
 Raw_reads/
 Raw_reads/Illumina/
