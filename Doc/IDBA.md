@@ -3,6 +3,7 @@
 ### First we need to create a directory named IDBA and move the TrimGalore filtred fastq files.
 **As fastq files sometimes are quite large, it is recommendable to use a symbolic (soft) link instead a real (hard) copy**
 ```console
+$ conda activate GenomeAssemblyModule
 $ mkdir IDBA
 $ cd IDBA/
 $ ln -s ../51_val_1.fq .
@@ -10,13 +11,16 @@ $ ln -s ../51_val_2.fq .
 ```
 IDBA uses a single fasta file to assembly, so the user needs to concatenate the pair fastq and convert it into a fasta single file; we can do it using the fq2fa from ~/bin/idba/bin/fq2fa: 
 ```console
-[veraponcedeleon.1@u016 IDBA]$ fq2fa --merge 51_val_1.fq 51_val_2.fq
+ $ fq2fa --merge 51_R1_val_1.fq 51_R2_val_2.fq 51.fasta
+$ ls -l
+total 691816
+-rw-rw-rw- 1 avera avera 708417785 May  6 19:20 51.fasta
+lrwxrwxrwx 1 avera avera        17 May  6 19:20 51_R1_val_1.fq -> ../51_R1_val_1.fq
+lrwxrwxrwx 1 avera avera        17 May  6 19:20 51_R2_val_2.fq -> ../51_R2_val_2.fq
 ```
-**In my case my fastq files are named as DacBet.30_val_1.fq DacBet.30_val_2.fq remember you need to use your own fastq files!!! If you are using the default trimGalored your files are named as: DacBet_val_1.fq DacBet_val_2.fq, check for these files when you run your data**
-
 Now we have all the elements to run IDBA_ud, let's check the help message
 ```console
-(base) [veraponcedeleon.1@unity-1 DacBIdba]$ ~/bin/idba/bin/idba_ud
+$ idba_ud
 
 not enough parameters
 IDBA-UD - Iterative de Bruijn Graph Assembler for sequencing data with highly uneven depth.
@@ -52,21 +56,13 @@ Allowed Options:
 ```
 Running IDBA with Dac.fasta file:
 ```console
-[veraponcedeleon.1@u016 IDBA]$ nohup time ~/bin/idba/bin/idba_ud -r DacBet.fa -o DacBIDBA --pre_correction --num_threads 4 > idba.log &
+nohup time idba_ud -r 51.fasta -o 51.idba.dir --pre_correction --num_threads 4 > idba.log &
 ```
-**This process requires from minutes to hrs to be completed I recommend use nohup and send the process to the background for running. Additionally the time command is helpful to show us how long our process took.**
+**This process requires from minutes to hrs to be completed I recommend use nohup and send the process to the background for running. Additionally the time command is helpful showing us how long our process took.**
 
-*~ Means my home this is why some times you see this symbol in my commands.
-
-###As soon as finished IDBA has created a directory (in this case DacBIdba) and the log from nohup command "idba.log2.
+###As soon as finished IDBA has created a directory (in this case 51.idba.dir ) and the log from nohup command "idba.log.
 ```console
-(base) [veraponcedeleon.1@u005 IDBA]$ ls
-DacBet.30_val_1.fq  DacBet.30_val_2.fq  DacBet.fa  DacBIDBA  idba.log
-(base) [veraponcedeleon.1@u005 IDBA]$ cd DacBIDBA/
-(base) [veraponcedeleon.1@u005 DacBIdba]$ ls
-align-100-0  align-60  contig-100.fa  contig-60.fa  graph-100.fa  graph-60.fa  local-contig-20.fa  local-contig-80.fa
-align-20     align-80  contig-20.fa   contig-80.fa  graph-20.fa   graph-80.fa  local-contig-40.fa  log
-align-40     begin     contig-40.fa   contig.fa     graph-40.fa   kmer         local-contig-60.fa
+$ 
 ```
  **Take a look into the basic assembly statistics**
 
