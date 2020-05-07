@@ -3,7 +3,7 @@
 **The easiest way to do this is by installing [Miniconda](https://docs.conda.io/en/latest/miniconda.html)**
 
 ```console
-$ curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 $ sh Miniconda3-latest-Linux-x86_64.sh
 ```
 
