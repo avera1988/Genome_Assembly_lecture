@@ -111,7 +111,7 @@ $ head -1 contig.fa
 ```
 In this header we have the contig length and the number of reads per each contig. 
 
-*Remembering the coverage formula:
+*Remembering the coverage formula:*
 
 **Coverage:**
 
@@ -128,7 +128,7 @@ L=Genome fragment size (length) in bases
 
 As we have all the elements to calculate the coverage in the conting header let's obtain a coverage table.
 
-**First we need to transforme the contigs.fa into a single lane fasta file, it means a header and the next line the sequnce. We can do it using the perl scripts/cambia_seqs_unalinea.pl
+**First we need to transforme the contigs.fa into a single lane fasta file, it means a header and the next line the sequnce. We can do it using the perl scripts/cambia_seqs_unalinea.pl**
 
 ```console
 perl ~/Genome_Assembly_lecture/Scripts/cambia_seqs_unalinea.pl contig.fa > contig.one.fa
@@ -195,4 +195,4 @@ contig.900.fa coverage=	59.497
 
 As you can appreciate removing those short contigs improves the assemlby stats and the coverage
 
-**What happen if you trimm the contigs to 1000?
+**What happen if you trimm the contigs to 1000?**
