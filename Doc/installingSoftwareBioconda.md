@@ -18,7 +18,7 @@ conda config --add channels conda-forge
 Now you can install all prgrams using the GenomeAssemblyModuleEnv.yml file from the [Scripts](https://github.com/avera1988/Genome_Assembly_lecture/tree/master/Scripts) folder
 
 ```console
-$ conda create -f GenomeAssemblyModuleEnv.yml
+$ conda env create -f GenomeAssemblyModuleEnv.yml
 ```
 *It takes a while to install*
 
