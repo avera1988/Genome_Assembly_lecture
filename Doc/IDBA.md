@@ -77,6 +77,7 @@ perl ~/Genome_Assembly_lecture/Scripts/assembly.stats.pl contig.fa
 Sample_ID	Genome	Contigs	Mean	Median	N50	Largest	GC(%)	N_count	N(%)	Gap_count
 contig.fa	3722537	313	11893	847	72960	219803	30.45		0.00	0 
 ```
+*~ means /home/ dome directory, maybe you need to indicate where the Scripts folder is located in your computer*
 
 These are the basic stats. Also using a more complex scritp from https://github.com/sanger-pathogens/assembly-stats/ we can detect all Nx parameters
 ```console
@@ -97,7 +98,7 @@ Gaps = 0
 The output of these scripts can be parsed into a txt file:
 
 ```console
-Genome_Assembly_lecture/Scripts/assembly-stats/assembly-stats contig.fa > contigs.stats.txt
+~/Genome_Assembly_lecture/Scripts/assembly-stats/assembly-stats contig.fa > contigs.stats.txt
 ```
 
 ## Obtain coverage information
@@ -130,162 +131,68 @@ As we have all the elements to calculate the coverage in the conting header let'
 **First we need to transforme the contigs.fa into a single lane fasta file, it means a header and the next line the sequnce. We can do it using the perl scripts/cambia_seqs_unalinea.pl
 
 ```console
-$ perl ~/scripts/cambia_seqs_unalinea.pl contig.fa > contig.one.fa
+perl ~/Genome_Assembly_lecture/Scripts/cambia_seqs_unalinea.pl contig.fa > contig.one.fa
 ```
 
-Then let's apply the ~/scripts/covergae.idba.pl to these new file. As a result it will give us the mean coverage of the assembly
+Then let's apply the ~/Genome_Assembly_lecture/Scripts/coverage.idga.pl to these new file. As a result it will give us the mean coverage of the assembly
 
 ```console
-(base) [veraponcedeleon.1@u009 DacBIdba]$ perl ../../scripts/coverage.idba.pl contig.one.fa 
-contig.one.fa coverage=	13.461
+perl ~/Genome_Assembly_lecture/Scripts/coverage.idba.pl contig.one.fa 
+contig.one.fa coverage=	49.423
 ```
 
 This script will generate a contig.one.fa.coverage.txt where the first column has the contig ID, the length and the last column the coverage
 
 ```console
-(base) [veraponcedeleon.1@u009 DacBIdba]$ head contig.one.fa.coverage.txt 
-contig-100_0	34647	12.220
-contig-100_1	30833	11.968
-contig-100_2	29559	13.001
-contig-100_3	26892	12.282
-contig-100_4	26710	12.857
-contig-100_5	26669	11.883
-contig-100_6	25574	12.814
-contig-100_7	25430	18.962
-contig-100_8	24685	11.902
-contig-100_9	24004	11.594
+head contig.one.fa.coverage.txt
+contig-100_0	219803	60.791
+contig-100_1	205903	54.280
+contig-100_2	171234	52.893
+contig-100_3	134051	63.489
+contig-100_4	122844	57.025
+contig-100_5	115567	58.570
+contig-100_6	105381	52.877
+contig-100_7	105256	62.898
+contig-100_8	98885	57.293
+contig-100_9	98560	65.169 
 ```
-
-### As we can see we have low coverage and a hihg number of contigs (>500) to report a genome announcement of Bacterial genome, NCBI request up to 200 contigs. Let's try using an other quality filter value, I'm using now a Q>=22.
+Most of the contigs has a coverage above 50X with an average of 49X, lets take a look to those contigs with a coverage lower than this.
 
 ```console
-(base) [veraponcedeleon.1@u009 DacBIdba]$ cd ..
-(base) [veraponcedeleon.1@u009 IDBA]$ mkdir DacBQ22
-(base) [veraponcedeleon.1@u009 IDBA]$ cd DacBQ22/
-(base) [veraponcedeleon.1@u009 DacBQ22]$ ln -s ../../TrimGalore/*fq .
-(base) [veraponcedeleon.1@u009 DacBQ22]$ ~/bin/idba/bin/fq2fa --merge DacBet.22_val_1.fq DacBet.22_val_2.fq Dac.fasta
-(base) [veraponcedeleon.1@u009 DacBQ22]$ nohup ~/bin/idba/bin/idba_ud -o DacB20 -r Dac.fasta --num_threads 4 --pre_correction > idba.log &
-(base) [veraponcedeleon.1@u009 DacBQ22]$ cd DacB20/
-(base) [veraponcedeleon.1@u009 DacB20]$ ls
+$ awk '{if($3 < 49) print}' contig.one.fa.coverage.txt > contigs.lower.40x.txt
+$ cat contigs.lower.40x.txt|wc -l
+137 
+```
+There are 137 contings lower than 40x. 
 
-align-100-0  align-40  align-80  contig-100.fa  contig-40.fa  contig-80.fa  graph-100.fa  graph-40.fa  graph-80.fa  local-contig-20.fa  local-contig-60.fa  log
-align-20     align-60  begin     contig-20.fa   contig-60.fa  contig.fa     graph-20.fa   graph-60.fa  kmer         local-contig-40.fa  local-contig-80.fa
-(base) [veraponcedeleon.1@u009 DacB20]$ perl ../../../scripts/assembly.stats.pl contig.fa 
-Sample_ID	Genome	Contigs	Mean	Median	N50	Largest	GC(%)	N_count	N(%)	Gap_count
-contig.fa	3530166	442	7986	5761	12891	38881	62.75		0.00	0
-(base) [veraponcedeleon.1@u009 DacB20]$ ../../../scripts/assembly-stats/assembly-stats contig.fa 
-stats for contig.fa
-sum = 3530166, n = 442, ave = 7986.80, largest = 38881
-N50 = 12891, n = 92
-N60 = 11028, n = 121
-N70 = 8118, n = 158
-N80 = 6539, n = 206
-N90 = 4000, n = 275
-N100 = 511, n = 442
+**Considering the average of a bacterial gene length is ~900 nt we can remove those small contigs shorter than 900 nt and compare the coverage again. For this we can use the trimm_len.pl script**
+
+```console
+perl ~/Genome_Assembly_lecture/Scripts/trimm_len.pl contig.one.fa 900 > contig.900.fa
+```
+
+Then obtain the stats
+
+```console
+~/Genome_Assembly_lecture/Scripts/assembly-stats/assembly-stats contig.900.fa 
+stats for contig.900.fa
+sum = 3644585, n = 148, ave = 24625.57, largest = 219803
+N50 = 73987, n = 15
+N60 = 57118, n = 21
+N70 = 40678, n = 29
+N80 = 28401, n = 39
+N90 = 13398, n = 57
+N100 = 902, n = 148
 N_count = 0
-Gaps = 0
-(base) [veraponcedeleon.1@u009 DacB20]$ ~/scripts/cambia_seqs_unalinea.pl contig.fa > contig.one.fa
-(base) [veraponcedeleon.1@u009 DacB20]$ perl ../../../scripts/coverage.idba.pl contig.one.fa 
-contig.one.fa coverage=	28.488
-(base) [veraponcedeleon.1@u009 DacB20]$ head contig.one.fa.coverage.txt 
-contig-100_0	38881	27.258
-contig-100_1	37751	28.142
-contig-100_2	34671	26.795
-contig-100_3	34147	28.231
-contig-100_4	33348	26.160
-contig-100_5	33014	26.849
-contig-100_6	30867	26.170
-contig-100_7	28217	25.977
-contig-100_8	27822	25.512
-contig-100_9	27119	27.929
+Gaps = 0 
 ```
-
-**Using this new data set we can apreciate how the number of contigs (fragmentation) decreased sum = 3530166, n = 442, ave = 7986.80, largest = 38881; and also the N90 is higher N90 = 4000, n = 275. Lastly the coverage is so much better: contig.one.fa coverage=	28.488**
-
-We can look into the contig.one.fa.coverage.txt file and see the length and the coverage, lets find those contigs with a coverage less than 20x
+And the coverage
 
 ```console
-(base) [veraponcedeleon.1@unity-1 DacB20]$ awk '{if($3 < 20) print $0 }' contig.one.fa.coverage.txt 
-contig-100_396	1269	18.913
-contig-100_399	1167	16.795
-contig-100_401	1132	16.608
-contig-100_409	982	16.090
-contig-100_410	950	19.158
-contig-100_411	938	19.616
-contig-100_413	883	18.800
-contig-100_419	806	18.362
-contig-100_422	737	19.539
-contig-100_423	710	16.901
-contig-100_424	709	18.618
-contig-100_428	640	15.938
-contig-100_433	594	18.519
-contig-100_434	567	19.048
-contig-100_435	560	8.571
-contig-100_437	528	9.470
-contig-100_438	527	15.180
-contig-100_439	525	15.238
-contig-100_441	511	16.438
-```
-How many?
-
-```console
-(base) [veraponcedeleon.1@unity-1 DacB20]$ awk '{if($3 < 20) print $0 }' contig.one.fa.coverage.txt |wc -l
-19
-```
-**As you see from these 19 contigs with low quality most of them are less than 1000 nt in length.**
-
-Even thoug these contigs are much better we still have contigs less than the lenght of a normal bacterial gene (~1000 nt) we can trimm those "short contigs" and see if our genome improves. To do this let's use the script/trimm_len.pl
-
-```console
-(base) [veraponcedeleon.1@unity-1 DacB20]$ perl ../../../scripts/trimm_len.pl
-
-Usage: perl ../../../scripts/trimm_len.pl fasta_file trimmm_value
-(base) [veraponcedeleon.1@unity-1 DacB20]$ perl ../../../scripts/trimm_len.pl contig.one.fa 1000 > contig.1000.fa
+perl ~/Genome_Assembly_lecture/Scripts/coverage.idba.pl contig.900.fa 
+contig.900.fa coverage=	59.497
 ```
 
-I am using a trimm value of 1000 due to the average gen of bacteria genes you can modify this parameter.
+As you can appreciate removing those short contigs improves the assemlby stats and the coverage
 
-Now we can compare the statistics of the original contig.one.fa and the contig.1000.fa
-
-```console
-(base) [veraponcedeleon.1@unity-1 DacB20]$ ../../../scripts/assembly-stats/assembly-stats contig.one.fa contig.1000.fa 
-stats for contig.one.fa
-sum = 3530166, n = 442, ave = 7986.80, largest = 38881
-N50 = 12891, n = 92
-N60 = 11028, n = 121
-N70 = 8118, n = 158
-N80 = 6539, n = 206
-N90 = 4000, n = 275
-N100 = 511, n = 442
-N_count = 0
-Gaps = 0
--------------------------------------------------------------------------------
-stats for contig.1000.fa
-sum = 3506760, n = 409, ave = 8573.99, largest = 38881
-N50 = 12896, n = 91
-N60 = 11032, n = 120
-N70 = 8301, n = 156
-N80 = 6601, n = 203
-N90 = 4196, n = 270
-N100 = 1009, n = 409
-N_count = 0
-Gaps = 0
-```
-
-Let's check the coverage:
-
-```console
-(base) [veraponcedeleon.1@unity-1 DacB20]$ perl ../../../scripts/coverage.idba.pl contig.1000.fa 
-contig.1000.fa coverage=	26.528
-```
-
-What do you think the average coverage is less than the original one?
-
-Now let's see again those coverage from contigs less than 20x
-```console
-(base) [veraponcedeleon.1@unity-1 DacB20]$ awk '{if($3 < 20) print $0 }' contig.1000.fa.coverage.txt 
-contig-100_396	1269	18.913
-contig-100_399	1167	16.795
-contig-100_401	1132	16.608
-````
-There are only 3 genes with a "low qual". Now you can see why is important to do this kind of quality check. 
+**What happen if you trimm the contigs to 1000?
