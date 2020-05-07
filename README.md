@@ -24,3 +24,5 @@ $ git clone https://github.com/avera1988/Genome_Assembly_lecture.git
 
 * Data example [Raw_reads](https://osu.box.com/s/tjk874n5k2hgwag64nnl40x4njv5qp9i)
 
+## All dependencies (i.e. FASTQC, TrimGalore, IDBA, SPADES, BUSCO and Bandage) used in this lecture can be local installed following the [installingSoftwareBioconda](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/Doc/installingSoftwareBioconda.md) instructions.
+
