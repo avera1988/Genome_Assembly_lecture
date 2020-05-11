@@ -47,6 +47,21 @@ $ conda activate GenomeAssemblyModule
 ```
 *Otherwise you can install all programs using Bioconda*
 
+**In case you are working in 148.204.124.131 server you need to activate all software, in order to not fill the HDD you can activate all programs using a source from my PATH environment variable:**
+
+```console
+source /export/home/avera2020/GenomeAssembly.May2020/programsPATH.sh
+```
+After this please check your PATH has changed:
+
+```console
+$ echo $PATH
+/export/home/avera2020/miniconda3/bin:/export/home/avera2020/miniconda3/condabin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/pdsh/bin:/opt/rocks/bin:/opt/rocks/sbin:/export/home/avera2020/.local/bin:/export/home/avera2020/bin
+```
+If you can see something like this it means now you have access to the software
+
+*By doing this you will be able to run all software without install*
+
 **Graphic version is fine for one file, but what happens when we have to deal with multiple files, well you can use the command line**
 ```console
 $ fastqc -h
