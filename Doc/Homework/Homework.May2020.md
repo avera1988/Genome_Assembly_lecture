@@ -1,4 +1,4 @@
-# Homework for evaluation Genome Assemlby lecture
+# Homework for evaluation Genome Assembly lecture
 
 1.	Run FastQC to all fastq files (i.e. 214, 224, 519 and 51) and obtain the .html report files
 2.	Run TrimGalore to all files for adapters removing and low-quality trimming bases (Q>= 30). Obtain the fastQC html reports
