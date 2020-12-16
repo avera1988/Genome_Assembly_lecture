@@ -15,12 +15,35 @@ conda config --add channels bioconda
 conda config --add channels conda-forge
 ```
 
-Now you can install all prgrams using the GenomeAssemblyModuleEnv.yml file from the [Scripts](https://github.com/avera1988/Genome_Assembly_lecture/tree/master/Scripts) folder
+Now we can create and environment and install all programs we will use: fastqc, trim-galore, idba, spades and BUSCO, in that particular environment with the following command:
 
 ```console
-$ conda env create -f GenomeAssemblyModule.yml
+$ conda create -n GenomeAssemblyModule -c bioconda -c conda-forge fastqc trim-galore idba spades busco=4.1.4
 ```
-*It takes a while to install*
+
+After solving environment the computer will ask you if you like to proceed, you need to type y and enter:
+
+```console
+xorg-renderproto   conda-forge/linux-64::xorg-renderproto-0.11.1-h14c3975_1002
+  xorg-xextproto     conda-forge/linux-64::xorg-xextproto-7.3.0-h14c3975_1002
+  xorg-xproto        conda-forge/linux-64::xorg-xproto-7.0.31-h7f98852_1007
+  xz                 conda-forge/linux-64::xz-5.2.5-h516909a_1
+  zlib               conda-forge/linux-64::zlib-1.2.11-h516909a_1010
+  zstd               conda-forge/linux-64::zstd-1.4.5-h6597ccf_2
+
+
+Proceed ([y]/n)? y
+````
+
+*It takes a while to install (between 10-30 min depending the computer and internet)*
+
+After this you need to load the environmen:
+
+**Activate the environment**
+
+```console
+$ conda activate GenomeAssemblyModule
+```
 
 **As there is a problem with Bandage software running from Bioconda so we need to install it manualy**
 
@@ -80,11 +103,4 @@ $ sudo strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core
 
 Check the installation here: https://rrwick.github.io/Bandage/
 
-
-Activate the environment
-
-```console
-$ conda activate GenomeAssemblyModule
-```
-
-**All software will be installed and loaded!**
+**Now all software have been installed and loaded!**
