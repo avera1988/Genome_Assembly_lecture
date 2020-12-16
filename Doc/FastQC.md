@@ -6,7 +6,7 @@ $ cp /export/home/avera2020/GenomeAssembly.May2020/Raw_reads.tar.gz /home/myhome
 ```
 *If you are not able to access the server, download the [Data](https://osu.box.com/s/tjk874n5k2hgwag64nnl40x4njv5qp9i) to your computer.*
 
--This is a small genome data set from [paper](https://aem.asm.org/content/86/8/e00091-20)
+-This is a small genome data set from this [paper](https://aem.asm.org/content/86/8/e00091-20)
 
 2. Open a terminal
 3. Create a folder named FastQC
