@@ -64,12 +64,21 @@ Version: 0.8.1
 
 Usage:    Bandage <command> [options]
 ```
-*Bandage requires Qt 5.2 or later to run, which is included on many modern Linux distributions.*
+*Bandage requires Qt 5.2 or later to run, which is included on many modern Linux distributions.However, if you are using WSL (Linux in Windows) you need to install it and modify the strip section*
 
 *If it is not already installed, you can find it through your package manager or from the Qt website: http://www.qt.io/download-open-source/*
 
+Install the qt5 packages with the following commands:
+
 *Ubuntu:*
-sudo apt-get install qt5-default
+```console
+$ sudo apt-get install qt5-default
+$ sudo strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+```
+
+6. If this not work you can always install the graphic version in Windows or Mac:
+
+Check the installation here: https://rrwick.github.io/Bandage/
 
 
 Activate the environment
