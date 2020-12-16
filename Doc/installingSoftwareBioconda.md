@@ -15,7 +15,7 @@ conda config --add channels bioconda
 conda config --add channels conda-forge
 ```
 
-Now we can create and environment and install all programs we will use: fastqc, trim-galore, idba, spades and BUSCO, in that particular environment with the following command:
+Now we can create and environment and install all software we will use: fastqc, trim-galore, idba, spades and BUSCO, in that particular environment using the following command:
 
 ```console
 $ conda create -n GenomeAssemblyModule -c bioconda -c conda-forge fastqc trim-galore idba spades busco=4.1.4
