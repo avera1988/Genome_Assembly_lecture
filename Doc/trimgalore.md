@@ -3,7 +3,8 @@
 ### Create a TrimGalore directory, copy there the illumina files
 
 ```console
-avera@mark3$ mkdir TrimGalore
+avera@mark3$ mkdir TrimmGalore
+avera@mark3$ cd TrimmGalore
 ln -s ../51_*fastq .
 ```
 *ln -s creates a "soft" link it means a shortcut to the file this is useful to save space
