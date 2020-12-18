@@ -33,7 +33,7 @@ CCCFFFFFHHHGHJJJJIIJJIJIJFJJJJJJJJJJJJJJIDFIIJJJJJGHIIJJGGIHIIJJGIEIEIDHIJIJHHHH
 **Now we can run TrimGalore command**
 
 ```console
-$ trim_galore --paired -j 4 -q 30 --fastqc --paired 51_R1.fastq 51_R2.fastq
+$ trim_galore -j 4 -q 30 --fastqc --paired 51_R1.fastq 51_R2.fastq
 ```
 
 *These are paried sequences so remember to add the --paired flag in order to keep pairs*
