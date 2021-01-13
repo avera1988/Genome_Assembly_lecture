@@ -4,7 +4,7 @@
 ```console
 $ cp /export/home/avera2020/GenomeAssembly.May2020/Raw_reads.tar.gz /home/myhomedir
 ```
-*If you are not able to access the server, download the [Data](https://osu.box.com/s/tjk874n5k2hgwag64nnl40x4njv5qp9i) to your computer.*
+*If you are not able to access the server, download the [Data](https://osu.box.com/s/ihc3scdel2xa3sjujus3bl4bjbp3l5vy) to your computer.*
 
 -This is a small genome data set from this [paper](https://aem.asm.org/content/86/8/e00091-20)
 
