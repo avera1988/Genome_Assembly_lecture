@@ -94,11 +94,15 @@ SYNOPSIS
 
 ```console
 (/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Fastqc.dir]$ ln -s ../*.gz .
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Fastqc.dir]$ ls -lrth
+total 0
+lrwxrwxrwx 1 avera2020 avera2020 37 May 30 15:06 k_p.illumina.ERR1015321_2.fastq.gz -> ../k_p.illumina.ERR1015321_2.fastq.gz
+lrwxrwxrwx 1 avera2020 avera2020 37 May 30 15:06 k_p.illumina.ERR1015321_1.fastq.gz -> ../k_p.illumina.ERR1015321_1.fastq.gz
 ```
 
 3. Finaly we can run FastQC
 
 ```console
-(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Fastqc.dir]$ fastqc -t 4 -f fastq *.gz
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Fastqc.dir]$ fastqc -t 4 --extract -f fastq *.gz
 ```
 
