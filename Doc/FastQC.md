@@ -106,3 +106,25 @@ lrwxrwxrwx 1 avera2020 avera2020 37 May 30 15:06 k_p.illumina.ERR1015321_1.fastq
 (/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Fastqc.dir]$ fastqc -t 4 --extract -f fastq *.gz
 ```
 
+4. Now we can check the resulting files:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Fastqc.dir]$ ls -lrth
+total 1.8M
+lrwxrwxrwx 1 avera2020 avera2020   37 May 30 15:06 k_p.illumina.ERR1015321_2.fastq.gz -> ../k_p.illumina.ERR1015321_2.fastq.gz
+lrwxrwxrwx 1 avera2020 avera2020   37 May 30 15:06 k_p.illumina.ERR1015321_1.fastq.gz -> ../k_p.illumina.ERR1015321_1.fastq.gz
+-rw-rw-r-- 1 avera2020 avera2020 289K May 30 15:11 k_p.illumina.ERR1015321_1_fastqc.zip
+-rw-rw-r-- 1 avera2020 avera2020 604K May 30 15:11 k_p.illumina.ERR1015321_1_fastqc.html
+drwxrwxr-x 4 avera2020 avera2020 4.0K May 30 15:11 k_p.illumina.ERR1015321_1_fastqc
+-rw-rw-r-- 1 avera2020 avera2020 295K May 30 15:11 k_p.illumina.ERR1015321_2_fastqc.zip
+-rw-rw-r-- 1 avera2020 avera2020 616K May 30 15:11 k_p.illumina.ERR1015321_2_fastqc.html
+drwxrwxr-x 4 avera2020 avera2020 4.0K May 30 15:11 k_p.illumina.ERR1015321_2_fastqc
+```
+
+FastQC will create 3 files:
+
+* An html report
+* A directory with all the files and results
+* A compressed (zip) file with all this results
+
+
