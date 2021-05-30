@@ -82,3 +82,23 @@ SYNOPSIS
     fastqc [-o output dir] [--(no)extract] [-f fastq|bam|sam] 
            [-c contaminant file] seqfile1 .. seqfileN
 ```
+
+### Let's create a subdirectory here to run FastQC
+
+1. create directory
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Illumina]$ mkdir Fastqc.dir
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Illumina]$ cd Fastqc.dir/
+```
+2. Then let's create a symbolic link (shortcut) of the reads (files) here:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Fastqc.dir]$ ln -s ../*.gz .
+```
+
+3. Finaly we can run FastQC
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Fastqc.dir]$ fastqc -t 4 -f fastq *.gz
+```
+
