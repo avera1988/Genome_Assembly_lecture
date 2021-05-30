@@ -187,6 +187,8 @@ Archive:  k_p.illumina.ERR1015321_2_fastqc.zip
   inflating: k_p.illumina.ERR1015321_2_fastqc/fastqc.fo
   ```
   
+7. You can enter to either the fastq folders generated and use the explorer (e.g Chrome or Firefox) to take a look of the fastqc_report.html 
+
 
 
 
