@@ -60,3 +60,25 @@ BBBBBFBFFBBFFFFFBFFFFFF/BF/<<BFFBF<BFBFF/<<F/<B//</F<<F/<//</FF/FFFF<<FFFFFFFFFF
 ```
 *As you noticed the promt has changed and now it displays ```/home/avera/condaenv/GenomeAssemblyModule``` before your user name, if you are able to see this the conda env is correctly loaded*
 
+## FastQC 
+
+This software is programed in java so it has a graphic user interfase (GUI) like this:
+```console
+$ fastqc
+```
+![Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/fastqcconsole.png)
+
+However as we will be working in the server sometimes is not convenient to use the GUI but the command-line interfase (CLI):
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Illumina]$ fastqc --help
+
+            FastQC - A high throughput sequence QC analysis tool
+
+SYNOPSIS
+
+	fastqc seqfile1 seqfile2 .. seqfileN
+
+    fastqc [-o output dir] [--(no)extract] [-f fastq|bam|sam] 
+           [-c contaminant file] seqfile1 .. seqfileN
+```
