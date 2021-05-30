@@ -49,5 +49,14 @@ BBBBBFBFFBBFFFFFBFFFFFF/BF/<<BFFBF<BFBFF/<<F/<B//</F<<F/<//</FF/FFFF<<FFFFFFFFFF
 **This is how a fastq sequence looks like:**
 * Sequnece name
 * Sequence
-* + plus some information
+* \+ plus some information
 * Quality
+
+6. To run FASTQC, we need to load a conda environment where all the software are installed to do this type the next lines into your terminal:
+
+```bash
+(base) [avera2020@pc-124-131 Illumina]$ conda activate /home/avera/condaenv/GenomeAssemblyModule/
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Illumina]$
+```
+*As you noticed the promt has changed and now it displays ```/home/avera/condaenv/GenomeAssemblyModule``` before your user name, if you are able to see this the conda env is correctly loaded*
+
