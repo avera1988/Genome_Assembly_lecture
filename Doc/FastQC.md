@@ -127,4 +127,66 @@ FastQC will create 3 files:
 * A directory with all the files and results
 * A compressed (zip) file with all this results
 
+5. To be able to look into the report we need to transfer the .zip folder (both) to our PC, we can do this by  the scp command as follow: Open a new termianal in your computer and type:
+
+```console
+(base) avera@L003772:Genome_Assembly.May.2021$ scp avera2020@148.204.124.131:/home/avera/Genome_Assembly.May.2021/RawReads.dir/Illumina/Fastqc.dir/*.zip .
+Password: 
+k_p.illumina.ERR1015321_1_fastqc.zip                                                                                                                        100%  289KB 375.4KB/s   00:00    
+k_p.illumina.ERR1015321_2_fastqc.zip                                                                                                                        100%  295KB 937.1KB/s   00:00
+(base) avera@L003772:Genome_Assembly.May.2021$ ls -l
+total 588
+-rw-r--r-- 1 avera avera 295871 May 30 21:17 k_p.illumina.ERR1015321_1_fastqc.zip
+-rw-r--r-- 1 avera avera 301804 May 30 21:17 k_p.illumina.ERR1015321_2_fastqc.zip
+```
+
+6. Now decompress the zip files:
+
+```console
+(base) avera@L003772:Genome_Assembly.May.2021$ unzip k_p.illumina.ERR1015321_1_fastqc.zip 
+Archive:  k_p.illumina.ERR1015321_1_fastqc.zip
+   creating: k_p.illumina.ERR1015321_1_fastqc/
+   creating: k_p.illumina.ERR1015321_1_fastqc/Icons/
+   creating: k_p.illumina.ERR1015321_1_fastqc/Images/
+  inflating: k_p.illumina.ERR1015321_1_fastqc/Icons/fastqc_icon.png  
+  inflating: k_p.illumina.ERR1015321_1_fastqc/Icons/warning.png  
+  inflating: k_p.illumina.ERR1015321_1_fastqc/Icons/error.png  
+  inflating: k_p.illumina.ERR1015321_1_fastqc/Icons/tick.png  
+  inflating: k_p.illumina.ERR1015321_1_fastqc/summary.txt  
+  inflating: k_p.illumina.ERR1015321_1_fastqc/Images/per_base_quality.png  
+  inflating: k_p.illumina.ERR1015321_1_fastqc/Images/per_sequence_quality.png  
+  inflating: k_p.illumina.ERR1015321_1_fastqc/Images/per_base_sequence_content.png  
+  inflating: k_p.illumina.ERR1015321_1_fastqc/Images/per_sequence_gc_content.png  
+  inflating: k_p.illumina.ERR1015321_1_fastqc/Images/per_base_n_content.png  
+  inflating: k_p.illumina.ERR1015321_1_fastqc/Images/sequence_length_distribution.png  
+  inflating: k_p.illumina.ERR1015321_1_fastqc/Images/duplication_levels.png  
+  inflating: k_p.illumina.ERR1015321_1_fastqc/Images/adapter_content.png  
+  inflating: k_p.illumina.ERR1015321_1_fastqc/fastqc_report.html  
+  inflating: k_p.illumina.ERR1015321_1_fastqc/fastqc_data.txt  
+  inflating: k_p.illumina.ERR1015321_1_fastqc/fastqc.fo  
+(base) avera@L003772:Genome_Assembly.May.2021$ unzip k_p.illumina.ERR1015321_2_fastqc.zip 
+Archive:  k_p.illumina.ERR1015321_2_fastqc.zip
+   creating: k_p.illumina.ERR1015321_2_fastqc/
+   creating: k_p.illumina.ERR1015321_2_fastqc/Icons/
+   creating: k_p.illumina.ERR1015321_2_fastqc/Images/
+  inflating: k_p.illumina.ERR1015321_2_fastqc/Icons/fastqc_icon.png  
+  inflating: k_p.illumina.ERR1015321_2_fastqc/Icons/warning.png  
+  inflating: k_p.illumina.ERR1015321_2_fastqc/Icons/error.png  
+  inflating: k_p.illumina.ERR1015321_2_fastqc/Icons/tick.png  
+  inflating: k_p.illumina.ERR1015321_2_fastqc/summary.txt  
+  inflating: k_p.illumina.ERR1015321_2_fastqc/Images/per_base_quality.png  
+  inflating: k_p.illumina.ERR1015321_2_fastqc/Images/per_sequence_quality.png  
+  inflating: k_p.illumina.ERR1015321_2_fastqc/Images/per_base_sequence_content.png  
+  inflating: k_p.illumina.ERR1015321_2_fastqc/Images/per_sequence_gc_content.png  
+  inflating: k_p.illumina.ERR1015321_2_fastqc/Images/per_base_n_content.png  
+  inflating: k_p.illumina.ERR1015321_2_fastqc/Images/sequence_length_distribution.png  
+  inflating: k_p.illumina.ERR1015321_2_fastqc/Images/duplication_levels.png  
+  inflating: k_p.illumina.ERR1015321_2_fastqc/Images/adapter_content.png  
+  inflating: k_p.illumina.ERR1015321_2_fastqc/fastqc_report.html  
+  inflating: k_p.illumina.ERR1015321_2_fastqc/fastqc_data.txt  
+  inflating: k_p.illumina.ERR1015321_2_fastqc/fastqc.fo
+  ```
+  
+
+
 
