@@ -190,13 +190,19 @@ Archive:  k_p.illumina.ERR1015321_2_fastqc.zip
 7. You can enter to either the fastq folders generated and use the explorer (e.g Chrome or Firefox) to take a look of the fastqc_report.html:
 
 Main results will show a Basic stats:
+
+
 ![BStats](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/BstatsFQC.png)
+
 
 A boxplot with the quality per base
 
+
 ![Boxplot](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/per_base_quality.png)
 
+
 A linear plot of GC content
+
 
 ![GCcontent](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/per_sequence_gc_content.png)
 
