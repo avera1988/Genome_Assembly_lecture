@@ -85,7 +85,7 @@ lrwxrwxrwx 1 avera2020 avera2020   37 May 31 09:39 k_p.illumina.ERR1015321_2.fas
 Again to be able to look the html reports we need to transfer this to our personal computer by SCP:
 
 ```console
-scp avera2020@148.204.124.131:/home/avera/Genome_Assembly.May.2021/RawReads.dir/Illumina/TrimGalore.dir/*.zip .
+(base) avera@L003772:TrimGaloreFastqc$ scp avera2020@148.204.124.131:/home/avera/Genome_Assembly.May.2021/RawReads.dir/Illumina/TrimGalore.dir/*.zip .
 Password: 
 k_p.illumina.ERR1015321_1_val_1_fastqc.zip    100%  282KB 371.1KB/s   00:00    
 k_p.illumina.ERR1015321_2_val_2_fastqc.zip    100%  285KB 900.6KB/s   00:00
