@@ -89,7 +89,7 @@ scp avera2020@148.204.124.131:/home/avera/Genome_Assembly.May.2021/RawReads.dir/
 Password: 
 k_p.illumina.ERR1015321_1_val_1_fastqc.zip    100%  282KB 371.1KB/s   00:00    
 k_p.illumina.ERR1015321_2_val_2_fastqc.zip    100%  285KB 900.6KB/s   00:00
-base) avera@L003772:TrimGaloreFastqc$ unzip k_p.illumina.ERR1015321_1_val_1_fastqc.zip 
+(base) avera@L003772:TrimGaloreFastqc$ unzip k_p.illumina.ERR1015321_1_val_1_fastqc.zip 
 Archive:  k_p.illumina.ERR1015321_1_val_1_fastqc.zip
    creating: k_p.illumina.ERR1015321_1_val_1_fastqc/
    creating: k_p.illumina.ERR1015321_1_val_1_fastqc/Icons/
