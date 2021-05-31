@@ -1,4 +1,4 @@
-# Instructions to create FastQC reports using multiple fastq files
+# Instructions to create FastQC reports using multiple Illumina fastq files
 
 1. using the SSH comand conect to 148.204.124.131 server:
 ```console
@@ -208,4 +208,111 @@ A linear plot of GC content
 
 
 
+# Using NanoPlot for quality check of Nanopore reads
 
+1. Go to the ```/home/user/Genome_Assembly.May.2021/RawReads.dir/Nanopore``` folder and create a folder named Nanoplot:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 ~]$ cd /home/avera/Genome_Assembly.May.2021/RawReads.dir/Nanopore
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Nanopore]$ 
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Nanopore]$ ls
+k_p.nanopre.fastq.gz
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Nanopore]$ mkdir Nanoplot
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Nanopore]$ cd Nanoplot/
+```
+2. Make a symbolic link of the fastq files:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Nanoplot]$ ln -s ../k_p.nanopre.fastq.gz .
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Nanoplot]$ ls -lrth
+total 0
+lrwxrwxrwx 1 avera2020 avera2020 23 May 31 11:22 k_p.nanopre.fastq.gz -> ../k_p.nanopre.fastq.gz
+```
+
+3. If the conda environment is not loaded doaded it: 
+
+```console
+[avera2020@pc-124-131 Nanopore]$ conda activate /home/avera/condaenv/GenomeAssemblyModule/
+```
+
+4. Display the NanoPlot help:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Nanoplot]$ NanoPlot --help
+usage: NanoPlot [-h] [-v] [-t THREADS] [--verbose] [--store] [--raw] [--huge]
+                [-o OUTDIR] [-p PREFIX] [--tsv_stats] [--info_in_report]
+                [--maxlength N] [--minlength N] [--drop_outliers]
+                [--downsample N] [--loglength] [--percentqual] [--alength]
+                [--minqual N] [--runtime_until N] [--readtype {1D,2D,1D2}]
+                [--barcoded] [--no_supplementary] [-c COLOR] [-cm COLORMAP]
+                [-f {png,jpg,jpeg,webp,svg,pdf,eps,json}]
+                [--plots [{kde,hex,dot} [{kde,hex,dot} ...]]]
+                [--legacy [{kde,dot,hex} [{kde,dot,hex} ...]]] [--listcolors]
+                [--listcolormaps] [--no-N50] [--N50] [--title TITLE]
+                [--font_scale FONT_SCALE] [--dpi DPI] [--hide_stats]
+                (--fastq file [file ...] | --fasta file [file ...] | --fastq_rich file [file ...] | --fastq_minimal file [file ...] | --summary file [file ...] | --bam file [file ...] | --ubam file [file ...] | --cram file [file ...] | --pickle pickle | --feather file [file ...])
+
+CREATES VARIOUS PLOTS FOR LONG READ SEQUENCING DATA.
+```
+
+4. Run NanoPlot:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Nanoplot]$ nohup NanoPlot -t 4 --fastq k_p.nanopre.fastq.gz --plots hex dot &
+```
+
+5. Explore the results:
+
+avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Nanoplot]$ ls -lrth
+total 1.5M
+lrwxrwxrwx 1 avera2020 avera2020   23 May 31 11:22 k_p.nanopre.fastq.gz -> ../k_p.nanopre.fastq.gz
+-rw-rw-r-- 1 avera2020 avera2020  815 May 31 11:24 NanoStats.txt
+-rw-rw-r-- 1 avera2020 avera2020  15K May 31 11:24 WeightedHistogramReadlength.html
+-rw-rw-r-- 1 avera2020 avera2020  42K May 31 11:24 WeightedHistogramReadlength.png
+-rw-rw-r-- 1 avera2020 avera2020  19K May 31 11:24 WeightedLogTransformed_HistogramReadlength.html
+-rw-rw-r-- 1 avera2020 avera2020  45K May 31 11:24 WeightedLogTransformed_HistogramReadlength.png
+-rw-rw-r-- 1 avera2020 avera2020  15K May 31 11:24 Non_weightedHistogramReadlength.html
+-rw-rw-r-- 1 avera2020 avera2020  31K May 31 11:24 Non_weightedHistogramReadlength.png
+-rw-rw-r-- 1 avera2020 avera2020  15K May 31 11:24 Non_weightedLogTransformed_HistogramReadlength.html
+-rw-rw-r-- 1 avera2020 avera2020  46K May 31 11:24 Non_weightedLogTransformed_HistogramReadlength.png
+-rw-rw-r-- 1 avera2020 avera2020 147K May 31 11:24 Yield_By_Length.html
+-rw-rw-r-- 1 avera2020 avera2020  40K May 31 11:24 Yield_By_Length.png
+-rw-rw-r-- 1 avera2020 avera2020 386K May 31 11:24 LengthvsQualityScatterPlot_dot.html
+-rw-rw-r-- 1 avera2020 avera2020  47K May 31 11:24 LengthvsQualityScatterPlot_dot.png
+-rw-rw-r-- 1 avera2020 avera2020 604K May 31 11:24 NanoPlot-report.html
+-rw-rw-r-- 1 avera2020 avera2020 2.4K May 31 11:24 NanoPlot_20210531_1124.log
+```
+ 
+ As fastQC, NanoPlot will give us multiple images (png) files and an html report NanoPlot-report.html. However, we can acess to the main stats looking into the NanoStats.txt file:
+ 
+ ```console
+ (/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Nanoplot]$ more NanoStats.txt 
+General summary:         
+Mean read length:              11,344.4
+Mean read quality:                 12.6
+Median read length:             6,234.5
+Median read quality:               12.8
+Number of reads:                7,406.0
+Read length N50:               23,135.0
+STDEV read length:             14,176.8
+Total bases:               84,016,695.0
+Number, percentage and megabases of reads above quality cutoffs
+>Q5:	7406 (100.0%) 84.0Mb
+>Q7:	7406 (100.0%) 84.0Mb
+>Q10:	7005 (94.6%) 79.1Mb
+>Q12:	5038 (68.0%) 55.1Mb
+>Q15:	51 (0.7%) 0.1Mb
+Top 5 highest mean basecall quality scores and their read lengths
+1:	16.5 (350)
+2:	16.1 (429)
+3:	15.9 (494)
+4:	15.8 (318)
+5:	15.8 (406)
+Top 5 longest reads and their mean basecall quality score
+1:	137298 (11.7)
+2:	124322 (12.6)
+3:	124087 (12.6)
+4:	123291 (13.1)
+5:	111837 (13.7)
+```
+### Could you detec the main differences between Illumina and Nanopore sequencing ???
