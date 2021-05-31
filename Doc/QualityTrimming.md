@@ -63,3 +63,73 @@ A user can monitorate the progress of the job by the [htop](https://htop.dev/) c
 (/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 TrimGalore.dir]$ htop
 ```
 ![HTOP](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/htop.png)
+
+At the end trim galore will produce two ```_val_``` fastq file (one per each pair), two trimming report files and two fastQC reports and .zip files:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 TrimGalore.dir]$ ls -lrth
+total 210M
+lrwxrwxrwx 1 avera2020 avera2020   93 May 31 09:39 k_p.illumina.ERR1015321_1.fastq.gz -> /home/avera/Genome_Assembly.May.2021/RawReads.dir/Illumina/k_p.illumina.ERR1015321_1.fastq.gz
+lrwxrwxrwx 1 avera2020 avera2020   37 May 31 09:39 k_p.illumina.ERR1015321_2.fastq.gz -> ../k_p.illumina.ERR1015321_2.fastq.gz
+-rw-rw-r-- 1 avera2020 avera2020 3.7K May 31 09:40 k_p.illumina.ERR1015321_1.fastq.gz_trimming_report.txt
+-rw-rw-r-- 1 avera2020 avera2020 103M May 31 09:41 k_p.illumina.ERR1015321_1_val_1.fq.gz
+-rw-rw-r-- 1 avera2020 avera2020 106M May 31 09:41 k_p.illumina.ERR1015321_2_val_2.fq.gz
+-rw-rw-r-- 1 avera2020 avera2020 3.8K May 31 09:41 k_p.illumina.ERR1015321_2.fastq.gz_trimming_report.txt
+-rw-rw-r-- 1 avera2020 avera2020 282K May 31 09:42 k_p.illumina.ERR1015321_1_val_1_fastqc.zip
+-rw-rw-r-- 1 avera2020 avera2020 619K May 31 09:42 k_p.illumina.ERR1015321_1_val_1_fastqc.html
+-rw-rw-r-- 1 avera2020 avera2020 286K May 31 09:43 k_p.illumina.ERR1015321_2_val_2_fastqc.zip
+-rw-rw-r-- 1 avera2020 avera2020 626K May 31 09:43 k_p.illumina.ERR1015321_2_val_2_fastqc.html
+-rw------- 1 avera2020 avera2020  13K May 31 09:43 nohup.out
+```
+
+Again to be able to look the html reports we need to transfer this to our personal computer by SCP:
+
+```console
+scp avera2020@148.204.124.131:/home/avera/Genome_Assembly.May.2021/RawReads.dir/Illumina/TrimGalore.dir/*.zip .
+Password: 
+k_p.illumina.ERR1015321_1_val_1_fastqc.zip    100%  282KB 371.1KB/s   00:00    
+k_p.illumina.ERR1015321_2_val_2_fastqc.zip    100%  285KB 900.6KB/s   00:00
+base) avera@L003772:TrimGaloreFastqc$ unzip k_p.illumina.ERR1015321_1_val_1_fastqc.zip 
+Archive:  k_p.illumina.ERR1015321_1_val_1_fastqc.zip
+   creating: k_p.illumina.ERR1015321_1_val_1_fastqc/
+   creating: k_p.illumina.ERR1015321_1_val_1_fastqc/Icons/
+   creating: k_p.illumina.ERR1015321_1_val_1_fastqc/Images/
+  inflating: k_p.illumina.ERR1015321_1_val_1_fastqc/Icons/fastqc_icon.png  
+  inflating: k_p.illumina.ERR1015321_1_val_1_fastqc/Icons/warning.png  
+  inflating: k_p.illumina.ERR1015321_1_val_1_fastqc/Icons/error.png  
+  inflating: k_p.illumina.ERR1015321_1_val_1_fastqc/Icons/tick.png  
+  inflating: k_p.illumina.ERR1015321_1_val_1_fastqc/summary.txt  
+  inflating: k_p.illumina.ERR1015321_1_val_1_fastqc/Images/per_base_quality.png  
+  inflating: k_p.illumina.ERR1015321_1_val_1_fastqc/Images/per_sequence_quality.png  
+  inflating: k_p.illumina.ERR1015321_1_val_1_fastqc/Images/per_base_sequence_content.png  
+  inflating: k_p.illumina.ERR1015321_1_val_1_fastqc/Images/per_sequence_gc_content.png  
+  inflating: k_p.illumina.ERR1015321_1_val_1_fastqc/Images/per_base_n_content.png  
+  inflating: k_p.illumina.ERR1015321_1_val_1_fastqc/Images/sequence_length_distribution.png  
+  inflating: k_p.illumina.ERR1015321_1_val_1_fastqc/Images/duplication_levels.png  
+  inflating: k_p.illumina.ERR1015321_1_val_1_fastqc/Images/adapter_content.png  
+  inflating: k_p.illumina.ERR1015321_1_val_1_fastqc/fastqc_report.html  
+  inflating: k_p.illumina.ERR1015321_1_val_1_fastqc/fastqc_data.txt  
+  inflating: k_p.illumina.ERR1015321_1_val_1_fastqc/fastqc.fo  
+(base) avera@L003772:TrimGaloreFastqc$ unzip k_p.illumina.ERR1015321_2_val_2_fastqc.zip 
+Archive:  k_p.illumina.ERR1015321_2_val_2_fastqc.zip
+   creating: k_p.illumina.ERR1015321_2_val_2_fastqc/
+   creating: k_p.illumina.ERR1015321_2_val_2_fastqc/Icons/
+   creating: k_p.illumina.ERR1015321_2_val_2_fastqc/Images/
+  inflating: k_p.illumina.ERR1015321_2_val_2_fastqc/Icons/fastqc_icon.png  
+  inflating: k_p.illumina.ERR1015321_2_val_2_fastqc/Icons/warning.png  
+  inflating: k_p.illumina.ERR1015321_2_val_2_fastqc/Icons/error.png  
+  inflating: k_p.illumina.ERR1015321_2_val_2_fastqc/Icons/tick.png  
+  inflating: k_p.illumina.ERR1015321_2_val_2_fastqc/summary.txt  
+  inflating: k_p.illumina.ERR1015321_2_val_2_fastqc/Images/per_base_quality.png  
+  inflating: k_p.illumina.ERR1015321_2_val_2_fastqc/Images/per_sequence_quality.png  
+  inflating: k_p.illumina.ERR1015321_2_val_2_fastqc/Images/per_base_sequence_content.png  
+  inflating: k_p.illumina.ERR1015321_2_val_2_fastqc/Images/per_sequence_gc_content.png  
+  inflating: k_p.illumina.ERR1015321_2_val_2_fastqc/Images/per_base_n_content.png  
+  inflating: k_p.illumina.ERR1015321_2_val_2_fastqc/Images/sequence_length_distribution.png  
+  inflating: k_p.illumina.ERR1015321_2_val_2_fastqc/Images/duplication_levels.png  
+  inflating: k_p.illumina.ERR1015321_2_val_2_fastqc/Images/adapter_content.png  
+  inflating: k_p.illumina.ERR1015321_2_val_2_fastqc/fastqc_report.html  
+  inflating: k_p.illumina.ERR1015321_2_val_2_fastqc/fastqc_data.txt  
+  inflating: k_p.illumina.ERR1015321_2_val_2_fastqc/fastqc.fo 
+  ```
+
