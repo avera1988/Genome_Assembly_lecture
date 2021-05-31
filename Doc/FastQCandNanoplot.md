@@ -263,6 +263,7 @@ CREATES VARIOUS PLOTS FOR LONG READ SEQUENCING DATA.
 
 5. Explore the results:
 
+```console
 avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Nanoplot]$ ls -lrth
 total 1.5M
 lrwxrwxrwx 1 avera2020 avera2020   23 May 31 11:22 k_p.nanopre.fastq.gz -> ../k_p.nanopre.fastq.gz
