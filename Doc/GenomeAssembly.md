@@ -387,7 +387,7 @@ Gaps = 0
 As with the SPADES we can also claculate the completenes with busco:
 
 ```console
-nohup busco -i assembly.fasta --auto-lineage-prok -m geno -o Illumina.busco -c 4 &
+nohup busco -i assembly.fasta --auto-lineage-prok -m geno -o Unicycler.busco -c 4 &
 ```
 
 In the mean time let's take a look of our graph assembly in Bandage. Remember to scp your file to your computer:
@@ -403,6 +403,234 @@ avera@L003772:Genome_Assembly.May.2021$ Bandage load assembly.gfa
 And draw the graph:
 
 ![Unic](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/graphunic.png)
+
+This strategy decrease the number and contigs but still we can not recover the circular genome.
+
+Let's go back to busco assesment:
+
+```console
+(/home/avera/condaenv/BUSCO) [avera2020@pc-124-131 Unicylcler.nanopore.dir]$ ls
+001_string_graph.gfa  003_racon_polished.gfa  assembly.gfa     nohup.out        unicycler.log
+002_unitig_graph.gfa  assembly.fasta          busco_downloads  Unicycler.busco
+(/home/avera/condaenv/BUSCO) [avera2020@pc-124-131 Unicycler.busco]$ ls
+auto_lineage     run_bacteria_odb10                                       short_summary.specific.mycoplasmatales_odb10.Illumina.busco.txt
+logs             run_mycoplasmatales_odb10
+prodigal_output  short_summary.generic.bacteria_odb10.Illumina.busco.txt
+```
+
+It seems busco has finished let's see the results:
+
+```console
+(/home/avera/condaenv/BUSCO) [avera2020@pc-124-131 Unicycler.busco]$ more short_summary.generic.bacteria_odb10.Illumina.busco.txt 
+# BUSCO version is: 5.1.3 
+# The lineage dataset is: bacteria_odb10 (Creation date: 2020-03-06, number of genomes: 4085, number of BUSCOs: 124)
+# Summarized benchmarking in BUSCO notation for file /home/avera/Genome_Assembly.May.2021.old/RawReads.dir/Nanopore/Unicyler/Unicylcler.nanopore.d
+ir/assembly.fasta
+# BUSCO was run in mode: genome
+# Gene predictor used: prodigal
+
+	***** Results: *****
+
+	C:12.9%[S:12.9%,D:0.0%],F:43.5%,M:43.6%,n:124	   
+	16	Complete BUSCOs (C)			   
+	16	Complete and single-copy BUSCOs (S)	   
+	0	Complete and duplicated BUSCOs (D)	   
+	54	Fragmented BUSCOs (F)			   
+	54	Missing BUSCOs (M)			   
+	124	Total BUSCO groups searched		   
+
+Dependencies and versions:
+	hmmsearch: 3.1
+	prodigal: 2.6.3
+(/home/avera/condaenv/BUSCO) [avera2020@pc-124-131 Unicycler.busco]$ more short_summary.specific.mycoplasmatales_odb10.Illumina.busco.txt 
+# BUSCO version is: 5.1.3 
+# The lineage dataset is: mycoplasmatales_odb10 (Creation date: 2020-03-06, number of genomes: 79, number of BUSCOs: 174)
+# Summarized benchmarking in BUSCO notation for file /home/avera/Genome_Assembly.May.2021.old/RawReads.dir/Nanopore/Unicyler/Unicylcler.nanopore.d
+ir/assembly.fasta
+# BUSCO was run in mode: genome
+# Gene predictor used: prodigal
+
+	***** Results: *****
+
+	C:8.6%[S:8.6%,D:0.0%],F:4.0%,M:87.4%,n:174	   
+	15	Complete BUSCOs (C)			   
+	15	Complete and single-copy BUSCOs (S)	   
+	0	Complete and duplicated BUSCOs (D)	   
+	7	Fragmented BUSCOs (F)			   
+	152	Missing BUSCOs (M)			   
+	174	Total BUSCO groups searched		   
+
+Dependencies and versions:
+	hmmsearch: 3.1
+	prodigal: 2.6.3
+```
+
+Well this genome is not so good acordingly to busco...
+
+## Hybrid assembly using both Illumina and Nanopore technologies.
+
+As we saw, Illumina assembly produced a very complete (> 98 %) but highly fragmented (104 contigs). Nonetheless, Nanopore technology produced a very few contings (9) but the completeness was super low (~ 19 %). Due to this, the best strategy is to perform a hybrid assembly. 
+
+We can use Unicycler for this.
+
+Let's first create a hybrid directory:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Genome_Assembly.May.2021.old]$ cd /home/avera/Genome_Assembly.May.2021/
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Genome_Assembly.May.2021.old]$ mkdir hybrid/
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Genome_Assembly.May.2021.old]$ cd hybrid/
+```
+
+Then put the hihgh quality trimmed reads from illumina and the Nanopre reads here:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 HybridAssembli.dir]$ ln -s ../RawReads.dir/Illumina/TrimGalore.dir/*val*gz .
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 HybridAssembli.dir]$ ln -s ../RawReads.dir/Nanopore/k_p.nanopre.fastq.gz .
+```
+
+And finally run Unicycler:
+
+```console
+nohup unicycler -t 4 -o HybridAssembly.dir -1 k_p.illumina.ERR1015321_1_val_1.fq.gz -2 k_p.illumina.ERR1015321_2_val_2.fq.gz -l k_p.nanopre.fastq.gz > unic.log 2>&1 &
+```
+
+*This assembly will take hrs so we need to let them run...*
+
+Once Unicycler has finshed it will create the directory ```HybridAssembly.dir```
+
+Let's take a look:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 hybrid]$ cd HybridAssembly.dir/
+(/home/avera/condaenv/BUSCO) [avera2020@pc-124-131 HybridAssembli.dir]$ ls
+001_best_spades_graph.gfa  003_long_read_assembly.gfa  005_final_clean.gfa  assembly.fasta  pilon_polish
+002_overlaps_removed.gfa   004_bridges_applied.gfa     006_rotated.gfa      assembly.gfa    unicycler.log
+```
+
+As before the final assembly is the ```assembly.fasta```
+
+The amazing steep of this assembler is that it looks into the strating gene dnaA and repA to circularize the bacterial genome. The report is at the end of the ```unic.log``` file:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 HybridAssembli.dir]$ tail -16 unicycler.log
+    Any completed circular contigs (i.e. single contigs which have one link connecting end to start) can have their start position changed without altering the sequence. For consistency, Unicycler now searches for a starting gene (dnaA or repA) in each such contig, and if one is found, the contig is rotated to start with that gene on the forward strand.
+
+Segment   Length      Depth    Starting gene     Position    Strand    Identity   Coverage
+      1   5,396,848    1.00x   UniRef90_B5XT51   2,173,899   forward      99.8%     100.0%
+      2     249,552    1.44x   UniRef90_Q6U5J6      89,094   forward      98.2%     100.0%
+      3      67,818    1.62x   none found                                                 
+      4       4,438   13.19x   none found                                                 
+
+Saving /home/avera/Genome_Assembly.May.2021/hybrid/HybridAssembli.dir/006_rotated.gfa
+
+
+Assembly complete (2021-06-01 08:12:44)
+---------------------------------------
+Saving /home/avera/Genome_Assembly.May.2021/hybrid/HybridAssembli.dir/assembly.gfa
+Saving /home/avera/Genome_Assembly.May.2021/hybrid/HybridAssembli.dir/assembly.fasta
+```
+
+We can run the assembly stats:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 HybridAssembli.dir]$ assembly-stats assembly.fasta 
+stats for assembly.fasta
+sum = 5722275, n = 6, ave = 953712.50, largest = 5396848
+N50 = 5396848, n = 1
+N60 = 5396848, n = 1
+N70 = 5396848, n = 1
+N80 = 5396848, n = 1
+N90 = 5396848, n = 1
+N100 = 126, n = 6
+N_count = 0
+Gaps = 0
+```
+
+Then Busco:
+
+```console(/home/avera/condaenv/BUSCO) [avera2020@pc-124-131 HybridAssembli.dir]$ nohup busco -i assembly.fasta --auto-lineage-prok -m geno -o hybrid.busco -c 4 &
+```
+
+Take a look into the busco results:
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 HybridAssembli.dir]$ cd hybrid.busco/
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 hybrid.busco]$ ls
+auto_lineage     run_bacteria_odb10                                     short_summary.specific.enterobacterales_odb10.hybrid.busco.txt
+logs             run_enterobacterales_odb10
+prodigal_output  short_summary.generic.bacteria_odb10.hybrid.busco.txt
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 hybrid.busco]$ more *.txt
+::::::::::::::
+short_summary.generic.bacteria_odb10.hybrid.busco.txt
+::::::::::::::
+# BUSCO version is: 5.1.3 
+# The lineage dataset is: bacteria_odb10 (Creation date: 2020-03-06, number of genomes: 4085, number of BUSCOs: 124)
+# Summarized benchmarking in BUSCO notation for file /home/avera/Genome_Assembly.May.2021.old/hybrid/HybridAssembli.dir/assembly.fasta
+# BUSCO was run in mode: genome
+# Gene predictor used: prodigal
+
+	***** Results: *****
+
+	C:98.4%[S:98.4%,D:0.0%],F:0.0%,M:1.6%,n:124	   
+	122	Complete BUSCOs (C)			   
+	122	Complete and single-copy BUSCOs (S)	   
+	0	Complete and duplicated BUSCOs (D)	   
+	0	Fragmented BUSCOs (F)			   
+	2	Missing BUSCOs (M)			   
+	124	Total BUSCO groups searched		   
+
+Dependencies and versions:
+	hmmsearch: 3.1
+	prodigal: 2.6.3
+::::::::::::::
+short_summary.specific.enterobacterales_odb10.hybrid.busco.txt
+::::::::::::::
+# BUSCO version is: 5.1.3 
+# The lineage dataset is: enterobacterales_odb10 (Creation date: 2021-02-23, number of genomes: 212, number of BUSCOs: 440)
+# Summarized benchmarking in BUSCO notation for file /home/avera/Genome_Assembly.May.2021.old/hybrid/HybridAssembli.dir/assembly.fasta
+# BUSCO was run in mode: genome
+# Gene predictor used: prodigal
+
+	***** Results: *****
+
+	C:99.1%[S:98.4%,D:0.7%],F:0.2%,M:0.7%,n:440	   
+	436	Complete BUSCOs (C)			   
+	433	Complete and single-copy BUSCOs (S)	   
+	3	Complete and duplicated BUSCOs (D)	   
+	1	Fragmented BUSCOs (F)			   
+	3	Missing BUSCOs (M)			   
+	440	Total BUSCO groups searched		   
+
+Dependencies and versions:
+	hmmsearch: 3.1
+	prodigal: 2.6.3
+	sepp: 4.4.0
+
+Placement file versions:
+	list_of_reference_markers.bacteria_odb10.2019-12-16.txt
+	tree.bacteria_odb10.2019-12-16.nwk
+	tree_metadata.bacteria_odb10.2019-12-16.txt
+	supermatrix.aln.bacteria_odb10.2019-12-16.faa
+	mapping_taxids-busco_dataset_name.bacteria_odb10.2019-12-16.txt
+	mapping_taxid-lineage.bacteria_odb10.2019-12-16.txt
+```
+
+And check the graph assembly.gfa
+
+```console
+scp avera2020@148.204.124.131:/home/avera/Genome_Assembly.May.2021.old/hybrid/HybridAssembly.dir/*.gfa .
+```
+
+Display the graph:
+
+```console
+avera@L003772:Genome_Assembly.May.2021$ Bandage load assembly.gfa
+```
+
+![hyb](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/hybrid.png)
+
+**Would you considere the hybrid assembly improve the recovery of the Genome??**
+
+### Welcome to the bacterial genomics and bioinfomatics realm!!!
 
 
 
