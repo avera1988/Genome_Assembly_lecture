@@ -548,7 +548,8 @@ Gaps = 0
 
 Then Busco:
 
-```console(/home/avera/condaenv/BUSCO) [avera2020@pc-124-131 HybridAssembli.dir]$ nohup busco -i assembly.fasta --auto-lineage-prok -m geno -o hybrid.busco -c 4 &
+```console
+(/home/avera/condaenv/BUSCO) [avera2020@pc-124-131 HybridAssembli.dir]$ nohup busco -i assembly.fasta --auto-lineage-prok -m geno -o hybrid.busco -c 4 &
 ```
 
 Take a look into the busco results:
