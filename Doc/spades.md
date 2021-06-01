@@ -178,5 +178,5 @@ We can load the  assembly_graph.fastg
 ```
 An then click to Draw graph
 
-![Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/graph.png)
+![Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/k_pgraph.png)
 
