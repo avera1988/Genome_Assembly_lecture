@@ -1,71 +1,108 @@
 # Here you will find the code for using SPADES assembler
 
-### First we need to create a directory named SPADES and move the TrimGalore with q=30   filtred DacBet fastq files.
-**As fastq files sometimes are quite large, it is recommendable to use a symbolic (soft) link instead a real (hard) copy**
+### First we need to create a directory named SPADES in the Illumina folder and bring the TrimGalored q=30 fastq files.
 
 ```console
-$ mkdir SPADES
-$ ln -s TrimGalore/51*val*fq .
+[avera2020@pc-124-131 RawReads.dir]$ cd /home/avera/Genome_Assembly.May.2021/RawReads.dir/Illumina/
+[avera2020@pc-124-131 Illumina]$ ls
+Fastqc.dir  k_p.illumina.ERR1015321_1.fastq.gz  k_p.illumina.ERR1015321_2.fastq.gz  TrimGalore.dir
+[avera2020@pc-124-131 Illumina]$ mkdir SPADES
+[avera2020@pc-124-131 Illumina]$ cd SPADES/
+[avera2020@pc-124-131 SPADES]$ ln -s ../TrimGalore.dir/*val*gz .
+[avera2020@pc-124-131 SPADES]$ ls -l
+total 0
+lrwxrwxrwx 1 avera2020 avera2020 55 May 31 11:31 k_p.illumina.ERR1015321_1_val_1.fq.gz -> ../TrimGalore.dir/k_p.illumina.ERR1015321_1_val_1.fq.gz
+lrwxrwxrwx 1 avera2020 avera2020 55 May 31 11:31 k_p.illumina.ERR1015321_2_val_2.fq.gz -> ../TrimGalore.dir/k_p.illumina.ERR1015321_2_val_2.fq.gz
  ```
-Now load the GenomeAssemblyModule environment and invoke spades
+Now load the GenomeAssemblyModule environment and ask for the Spades help
 ```console
-$ conda activate GenomeAssemblyModule
+(/home/apps/miniconda3) [avera2020@pc-124-131 SPADES]$ conda activate /home/avera/condaenv/GenomeAssemblyModule/
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 SPADES]$
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 SPADES]$ spades.py --help
+SPAdes genome assembler v3.15.2
 
-spades.py --help
-SPAdes genome assembler v3.14.0
+Usage: spades.py [options] -o <output_dir>(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 SPADES]$ spades.py --help
+SPAdes genome assembler v3.15.2
 
-Usage: spades.py [options] -o <output_dir> 
+Usage: spades.py [options] -o <output_dir>
 ```
-Running spades
+Running spades: 
 
 ```console
-$ nohup time spades.py -1 51_R1_val_1.fq -2 51_R2_val_2.fq -t 4 -o 51.spades.dir &
+nohup spades.py -o Spades.illumina.dir --isolate -t 4 -1 k_p.illumina.ERR1015321_1_val_1.fq.gz -2 k_p.illumina.ERR1015321_2_val_2.fq.gz > spades.log &
 ```
 
 *As spades will take a time to run, I highly recommend to use the nohoup command and then & to run it in the background. The time command will tell you how long your job takes to complete*
 
-Once finished a new 51.spades.dir will be created
+Once finished a new Spades.illumina.dir will be created. Take a look:
 
 ```console
-$ ls
-51_R1_val_1.fq  51_R2_val_2.fq  51.spades.dir  nohup.out
-$ cd 51.spades.dir/
-$ ls
-assembly_graph.fastg               before_rr.fasta  contigs.paths  dataset.info        K21  K55   params.txt      run_spades.sh    scaffolds.fasta  spades.log  warnings.log
-assembly_graph_with_scaffolds.gfa  contigs.fasta    corrected      input_dataset.yaml  K33  misc  pipeline_state  run_spades.yaml  scaffolds.paths  tmp
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 SPADES]$ cd Spades.illumina.dir/
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Spades.illumina.dir]$ ls -l
+total 39912
+-rw-rw-r-- 1 avera2020 avera2020  5751667 May 31 11:43 assembly_graph_after_simplification.gfa
+-rw-rw-r-- 1 avera2020 avera2020 11757371 May 31 11:43 assembly_graph.fastg
+-rw-rw-r-- 1 avera2020 avera2020  5780066 May 31 11:43 assembly_graph_with_scaffolds.gfa
+-rw-rw-r-- 1 avera2020 avera2020  5809248 May 31 11:43 before_rr.fasta
+-rw-rw-r-- 1 avera2020 avera2020  5739942 May 31 11:43 contigs.fasta
+-rw-rw-r-- 1 avera2020 avera2020    52544 May 31 11:43 contigs.paths
+-rw-rw-r-- 1 avera2020 avera2020      111 May 31 11:35 dataset.info
+-rw-rw-r-- 1 avera2020 avera2020      320 May 31 11:35 input_dataset.yaml
+drwxrwxr-x 4 avera2020 avera2020     4096 May 31 11:37 K21
+drwxrwxr-x 4 avera2020 avera2020     4096 May 31 11:39 K33
+drwxrwxr-x 4 avera2020 avera2020     4096 May 31 11:43 K55
+drwxrwxr-x 2 avera2020 avera2020     4096 May 31 11:43 misc
+-rw-rw-r-- 1 avera2020 avera2020     1558 May 31 11:35 params.txt
+drwxrwxr-x 2 avera2020 avera2020     4096 May 31 11:43 pipeline_state
+-rw-rw-r-- 1 avera2020 avera2020     3649 May 31 11:35 run_spades.sh
+-rw-rw-r-- 1 avera2020 avera2020     4822 May 31 11:35 run_spades.yaml
+-rw-rw-r-- 1 avera2020 avera2020  5740750 May 31 11:43 scaffolds.fasta
+-rw-rw-r-- 1 avera2020 avera2020    51627 May 31 11:43 scaffolds.paths
+-rw-rw-r-- 1 avera2020 avera2020   113735 May 31 11:43 spades.log
+drwxrwxr-x 2 avera2020 avera2020     4096 May 31 11:43 tmp
 ```
- **Take a look into the basic assembly statistics**
+ The final assembled contigs are in ```contigs.fasta``` file.
+ 
+ **We can use the assembly-stats tool for taking a look into the basic assembly statistics**
 
 ```console
-/Genome_Assembly_lecture/Scripts/assembly-stats/assembly-stats contigs.fasta 
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Spades.illumina.dir]$ assembly-stats contigs.fasta 
 stats for contigs.fasta
-sum = 3736674, n = 431, ave = 8669.78, largest = 251295
-N50 = 98476, n = 11
-N60 = 73669, n = 15
-N70 = 60733, n = 20
-N80 = 43528, n = 28
-N90 = 23983, n = 39
-N100 = 56, n = 431
+sum = 5632217, n = 388, ave = 14516.02, largest = 271249
+N50 = 121603, n = 16
+N60 = 99471, n = 21
+N70 = 84939, n = 27
+N80 = 61116, n = 35
+N90 = 30939, n = 48
+N100 = 56, n = 388
 N_count = 0
 Gaps = 0
 ```
-We can also see the coverage, such as in IDBA. But with SPADES we have the advantage that the coverage now is printed in the header, let's take a look
+
+SPADES prints the coverage of each contigs in the header of the fasta sequence, let's take a look
 ```console
-head -1 contigs.fasta 
->NODE_1_length_251295_cov_55.065965
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Spades.illumina.dir]$ head -1 contigs.fasta 
+>NODE_1_length_271249_cov_63.798167
 ```
-Following the same idea as in IDBA let's obtain the coverage for SPADES assembly
+Let's use this and obtain the coverage for SPADES assembly using some perl scripts:
+
+1. Let's be sure that all our sequences are in a one-line format, it means header\nsequences:
 
 ```console
-perl ~/Genome_Assembly_lecture/Scripts/cambia_seqs_unalinea.pl contigs.fasta > contigs.one.fasta
-perl ~/Genome_Assembly_lecture/Scripts/coverage.spades.pl contigs.one.fasta 
-contigs.one.fasta coverage=	45.969
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Spades.illumina.dir]$ cambia_seqs_unalinea.pl contigs.fasta > contigs.one.fasta
 ```
 
-Acording to the stats there are many contings (431) with a length of 56 this is less than a read so we can remove all those short contigs to >= 900 nt 
+2. We can use then the script coverage.spades.pl to calculate the coverage:
 
 ```console
-perl ~/Genome_Assembly_lecture/Scripts/trimm_len.pl contigs.one.fasta 900|sed 's/\t/_/g'  > contigs.900.fasta
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Spades.illumina.dir]$ coverage.spades.pl contigs.one.fasta 
+contigs.one.fasta coverage=	122.663
+```
+
+Acording to the stats there are many contings (388) with a length of 56 this is less than a read so we can remove all those "short" contigs and keep those >= 900 nt using the ```trimm_len.pl``` script 
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Spades.illumina.dir]$ trimm_len.pl contigs.one.fasta 900|sed 's/\t/_/g'  > contigs.900.fasta
 ```
 *As the scritp keep a tab in the header we need to remove it with sed*
 
@@ -73,14 +110,38 @@ perl ~/Genome_Assembly_lecture/Scripts/trimm_len.pl contigs.one.fasta 900|sed 's
 Now we can check the coverage stats
 
 ```console
-perl ~/Genome_Assembly_lecture/Scripts/coverage.spades.pl contigs.900.fasta 
-contigs.900.fasta coverage=	71.065
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Spades.illumina.dir]$ coverage.spades.pl contigs.900.fasta 
+contigs.900.fasta coverage=	110.912
 ```
-Now you can see how the average coverage improves significativelly removing these short contigs
+The coverage decrease a little bit but let's see the main stats:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Spades.illumina.dir]$ assembly-stats contigs.900.fasta
+stats for contigs.900.fasta
+sum = 5590285, n = 104, ave = 53752.74, largest = 271249
+N50 = 121603, n = 16
+N60 = 99471, n = 21
+N70 = 84939, n = 27
+N80 = 63154, n = 34
+N90 = 32499, n = 47
+N100 = 923, n = 104
+N_count = 0
+Gaps = 0
+```
+Now we reduce the number of contigs from 388 to 104, not much but still useful...
 
 **Visualization of the assembly graph to detect circular replicons and quality value using Bandage**
 
-An advantage to use Spades as assembler is due to it gives us a file assembly_graph.fastg with all the nodes and edges of the graph
+Please install Bandage in your computer following the [Bandage](https://rrwick.github.io/Bandage/) installation instructions.
+
+An advantage to use Spades as assembler is due to it gives us a file assembly_graph.fastg with all the nodes and edges of the graph. 
+
+**As Bandage is a GUI like software you will need to transfer your data to your computer and use Bandage there.**
+
+```
+scp avera2020@148.204.124.131:/home/avera/Genome_Assembly.May.2021/RawReads.dir/Illumina/SPADES/Spades.illumina.dir/assembly_graph.fastg .
+```
+If you correctly installed Bandage you can either open it clicking in the icon or using your command line as follows: 
 
 ```console
 $ Bandage --help
@@ -113,22 +174,9 @@ Online Bandage help: https://github.com/rrwick/Bandage/wiki
 We can load the  assembly_graph.fastg
 
 ```console
-Bandage l assembly_graph.fastg
+(GenomeAssemblyModule) avera@L003772:Genome_Assembly.May.2021$ Bandage load assembly_graph.fastg
 ```
 An then click to Draw graph
 
 ![Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/graph.png)
 
-A small circular replicon is appreciated at the botom of the image, this can be a plasmid or virus.
-
-Now let's take a look into an E. coli assembly, a bacteria with plasmids!
-
-![Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/BandageEcoli.png)
-
-As you can see there is a big graph and a circular one. This small one could be a plasmid. We can slect a contig and perform a BlastX to know if there is any gene related to replication or plasmid.
-
-![Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/BandageBlast.png)
-
-After Blast search it seems this "cicular" graph has conjugative elements genes, suggesting a possible plasmid presence and assembly.
-
-![Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/Blast.png)
