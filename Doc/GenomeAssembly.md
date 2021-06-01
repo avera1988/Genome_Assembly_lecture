@@ -295,7 +295,12 @@ Placement file versions:
  
  ## Assembly the Nanopore data
  
+ We are using [Unicycler](https://github.com/rrwick/Unicycler) assembler to assembly the Nanopore data. 
  
+ ![logo](https://github.com/rrwick/Unicycler/blob/main/misc/logo.png)
+
+**Unicycler is an assembly pipeline for bacterial genomes. It can assemble Illumina-only read sets where it functions as a SPAdes-optimiser. It can also assembly long-read-only sets (PacBio or Nanopore) where it runs a miniasm+Racon pipeline.**
+
 
 
 
