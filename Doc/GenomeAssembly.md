@@ -302,6 +302,44 @@ Placement file versions:
 **Unicycler is an assembly pipeline for bacterial genomes. It can assemble Illumina-only read sets where it functions as a SPAdes-optimiser. It can also assembly long-read-only sets (PacBio or Nanopore) where it runs a miniasm+Racon pipeline.**
 
 
+Let's move to the Nanopore data:
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 ~]$ cd /home/avera/Genome_Assembly.May.2021.old/RawReads.dir/Nanopore/
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Nanopore]$
+```
+Then create a Unicycler folder and put our reads in it:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Nanopore]$ mkdir Unicyler
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Nanopore]$ cd Unicyler/
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Unicyler]$ ln -s ../k_p.nanopre.fastq.gz .
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Unicyler]$ ls -l
+total 0
+lrwxrwxrwx 1 avera2020 avera2020 23 May 31 12:01 k_p.nanopre.fastq.gz -> ../k_p.nanopre.fastq.gz
+```
+
+Display the unicylcer help:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Unicyler]$ unicycler --help
+usage: unicycler [-h] [--help_all] [--version] [-1 SHORT1] [-2 SHORT2] [-s UNPAIRED] [-l LONG] -o OUT [--verbosity VERBOSITY] [--min_fasta_length MIN_FASTA_LENGTH] [--keep KEEP]
+                 [-t THREADS] [--mode {conservative,normal,bold}] [--linear_seqs LINEAR_SEQS] [--vcf]
+
+       __
+       \ \___
+        \ ___\
+        //
+   ____//      _    _         _                     _
+ //_  //\\    | |  | |       |_|                   | |
+//  \//  \\   | |  | | _ __   _   ___  _   _   ___ | |  ___  _ __
+||  (O)  ||   | |  | || '_ \ | | / __|| | | | / __|| | / _ \| '__|
+\\    \_ //   | |__| || | | || || (__ | |_| || (__ | ||  __/| |
+ \\_____//     \____/ |_| |_||_| \___| \__, | \___||_| \___||_|
+                                        __/ |
+                                       |___/
+
+Unicycler: an assembly pipeline for bacterial genomes
+```
 
 
 
