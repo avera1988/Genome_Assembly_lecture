@@ -184,3 +184,14 @@ An then click to Draw graph
 
 We now recover the bacterial genome, but it is still quite fragmented (n=104 contigs). But how complete is our genome??
 
+## Genome completeness assessment by single-copy orthologs
+[BUSCO](https://busco.ezlab.org/) (Benchmarking Universal Single-Copy Orthologs) is a tool that attempts to provide a quantitative assessment of the completeness in terms of expected gene content of a genome assembly, transcriptome, or annotated gene set. The results are simplified into categories of Complete and single-copy, Complete and duplicated, Fragmented, or Missing BUSCOs.
+
+This software looks for a certain number of orthologous genes (BUSCOs) on a database and compares the total of these ortholog genes present in the genome we would like to evaluate. Then, it estimates the completeness based on the presence, duplication, fragmentation, or absence of these BUSCOS. For example (raw example), if the BUSCO database has 10 genes and the software only finds 9 of them in the query genome it scores completeness of the genome at 90 %.
+
+BUSCO has developed different databases with common universal orthologs clusters for several organisms:
+![buscoimg](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/busco.png)
+
+Busco will predict genes in the assembly (by prodigal) and then look for the USCOs of a certain taxonomical lineage using hmmer. It automatically identifies the closest taxonomical lineage and then download the BUSCOs database, however you can indicate and narrow the BUSCOs sarch to a prokaryote or eukaryote database by using the **--auto-lineage-prok** flag.
+
+
