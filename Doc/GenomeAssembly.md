@@ -182,3 +182,5 @@ An then click to Draw graph
 
 ![Alt Text](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/k_pgraph.png)
 
+We now recover the bacterial genome, but it is still quite fragmented (n=104 contigs). But how complete is our genome??
+
