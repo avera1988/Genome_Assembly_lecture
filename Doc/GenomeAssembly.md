@@ -293,6 +293,9 @@ Placement file versions:
  ````
  Now we can see that the genome is > 98 % complete acordingly to Busco and it decided that out bacteria belongs to the enterobacteriales order and is 98.9 % complete.
  
+ **Before finish lets remove the busco_downloads folder to save space!!!**
+ 
+ 
  ## Assembly the Nanopore data
  
  We are using [Unicycler](https://github.com/rrwick/Unicycler) assembler to assembly the Nanopore data. 
@@ -340,6 +343,66 @@ usage: unicycler [-h] [--help_all] [--version] [-1 SHORT1] [-2 SHORT2] [-s UNPAI
 
 Unicycler: an assembly pipeline for bacterial genomes
 ```
+
+We can start the assembly then:
+
+```console
+nohup unicycler -t 4 -o Unicylcler.nanopore.dir -l k_p.nanopre.fastq.gz > unicylcer.log &
+```
+
+Once Unicycler has finished it will create the ```Unicylcler.nanopore.dir```. Let's take a look:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Unicyler]$ cd Unicylcler.nanopore.dir/
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Unicylcler.nanopore.dir]$ ls -l
+total 37924
+-rw-rw-r-- 1 avera2020 avera2020 16309656 May 31 12:03 001_string_graph.gfa
+-rw-rw-r-- 1 avera2020 avera2020  5536912 May 31 12:03 002_unitig_graph.gfa
+-rw-rw-r-- 1 avera2020 avera2020  5630892 May 31 12:11 003_racon_polished.gfa
+-rw-rw-r-- 1 avera2020 avera2020  5710952 May 31 12:13 assembly.fasta
+-rw-rw-r-- 1 avera2020 avera2020  5630892 May 31 12:13 assembly.gfa
+-rw-rw-r-- 1 avera2020 avera2020     4201 May 31 12:13 unicycler.log
+```
+
+From the multiple files our final assembly is the ```assembly.fasta``` but also generates a graph the ```asembly.gfa```
+
+We can then calculate the assembly-stats
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Unicylcler.nanopore.dir]$ assembly-stats assembly.fasta 
+stats for assembly.fasta
+sum = 5630486, n = 9, ave = 625609.56, largest = 2197670
+N50 = 1090721, n = 2
+N60 = 817786, n = 3
+N70 = 817786, n = 3
+N80 = 524838, n = 4
+N90 = 311484, n = 6
+N100 = 33187, n = 9
+N_count = 0
+Gaps = 0
+```
+
+**Is there any difference between this assembly and the Illumina one ?**
+
+As with the SPADES we can also claculate the completenes with busco:
+
+```console
+nohup busco -i assembly.fasta --auto-lineage-prok -m geno -o Illumina.busco -c 4 &
+```
+
+In the mean time let's take a look of our graph assembly in Bandage. Remember to scp your file to your computer:
+
+
+```console
+(base) avera@L003772:Genome_Assembly.May.2021$ scp avera2020@148.204.124.131:/home/avera/Genome_Assembly.May.2021.old/RawReads.dir/Nanopore/Unicyler/Unicylcler.nanopore.dir/assembly.gfa .
+Password: 
+assembly.gfa                                                                                         100% 5499KB   2.7MB/s   00:02
+avera@L003772:Genome_Assembly.May.2021$ Bandage load assembly.gfa
+```
+
+And draw the graph:
+
+![Unic](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/graphunic.png)
 
 
 
