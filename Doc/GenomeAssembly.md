@@ -1,6 +1,8 @@
-# Here you will find the code for using SPADES assembler
+# Assembly a Klebsiella pneumonie bacterial genome using Illumina and Nanopore sequencing technologies
 
-### First we need to create a directory named SPADES in the Illumina folder and bring the TrimGalored q=30 fastq files.
+## Working with Illumina reads:
+
+First we need to create a directory named SPADES in the Illumina folder and bring the TrimGalored q=30 fastq files.
 
 ```console
 [avera2020@pc-124-131 RawReads.dir]$ cd /home/avera/Genome_Assembly.May.2021/RawReads.dir/Illumina/
