@@ -194,4 +194,110 @@ BUSCO has developed different databases with common universal orthologs clusters
 
 Busco will predict genes in the assembly (by prodigal) and then look for the USCOs of a certain taxonomical lineage using hmmer. It automatically identifies the closest taxonomical lineage and then download the BUSCOs database, however you can indicate and narrow the BUSCOs sarch to a prokaryote or eukaryote database by using the **--auto-lineage-prok** flag.
 
+BUSCO is installed in the server in a different conda environment. So, we need firt to activate the ```BUSCO``` environment as follo:
+
+```console
+(/home/avera/condaenv/GenomeAssemblyModule) [avera2020@pc-124-131 Spades.illumina.dir]$ conda activate /home/avera/condaenv/BUSCO/
+(/home/avera/condaenv/BUSCO) [avera2020@pc-124-131 Spades.illumina.dir]$
+```
+
+Now lets display the Busco help:
+
+```console
+(/home/avera/condaenv/BUSCO) [avera2020@pc-124-131 Spades.illumina.dir]$ busco --help
+usage: busco -i [SEQUENCE_FILE] -l [LINEAGE] -o [OUTPUT_NAME] -m [MODE] [OTHER OPTIONS]
+
+Welcome to BUSCO 5.1.3: the Benchmarking Universal Single-Copy Ortholog assessment tool.
+For more detailed usage information, please review the README file provided with this distribution and the BUSCO user guide.
+```
+We need to indicate the genome.fasta file we are using as a query, the lineage (in this case --auto-lineage-prok), the mode (genome) and the output prefix.
+
+Run BUSCO:
+
+```console
+nohup busco -i contigs.900.fasta --auto-lineage-prok -m geno -o Illumina.busco -c 4 &
+```
+
+Busco will create two directories:
+* Illumina.busco > all results
+* busco_downloads > databases and orthologous genes downloaded
+
+Let's take a look into the Results (Illumina.busco) results:
+
+```console
+(/home/avera/condaenv/BUSCO) [avera2020@pc-124-131 Spades.illumina.dir]$ cd Illumina.busco/
+(/home/avera/condaenv/BUSCO) [avera2020@pc-124-131 Illumina.busco]$ ls
+auto_lineage     run_bacteria_odb10                                       short_summary.specific.enterobacterales_odb10.Illumina.busco.txt
+logs             run_enterobacterales_odb10
+prodigal_output  short_summary.generic.bacteria_odb10.Illumina.busco.txt
+```
+There are multiplefolders but the main results are in the .txt files as:
+
+* short_summary.generic.bacteria_odb10.Illumina.busco.txt 
+* short_summary.specific.enterobacterales_odb10.Illumina.busco.txt
+
+Let's look into these files:
+
+```console
+(/home/avera/condaenv/BUSCO) [avera2020@pc-124-131 Illumina.busco]$ more short_summary.generic.bacteria_odb10.Illumina.busco.txt 
+# BUSCO version is: 5.1.3 
+# The lineage dataset is: bacteria_odb10 (Creation date: 2020-03-06, number of genomes: 4085, number of BUSCOs: 124)
+# Summarized benchmarking in BUSCO notation for file /home/avera/Genome_Assembly.May.2021.old/RawReads.dir/Illumina/SPADES/Spades.illumina.dir/con
+tigs.900.fasta
+# BUSCO was run in mode: genome
+# Gene predictor used: prodigal
+
+	***** Results: *****
+
+	C:98.4%[S:98.4%,D:0.0%],F:0.0%,M:1.6%,n:124	   
+	122	Complete BUSCOs (C)			   
+	122	Complete and single-copy BUSCOs (S)	   
+	0	Complete and duplicated BUSCOs (D)	   
+	0	Fragmented BUSCOs (F)			   
+	2	Missing BUSCOs (M)			   
+	124	Total BUSCO groups searched		   
+
+Dependencies and versions:
+	hmmsearch: 3.1
+	prodigal: 2.6.3
+(/home/avera/condaenv/BUSCO) [avera2020@pc-124-131 Illumina.busco]$ more short_summary.specific.enterobacterales_odb10.Illumina.busco.txt 
+# BUSCO version is: 5.1.3 
+# The lineage dataset is: enterobacterales_odb10 (Creation date: 2021-02-23, number of genomes: 212, number of BUSCOs: 440)
+# Summarized benchmarking in BUSCO notation for file /home/avera/Genome_Assembly.May.2021.old/RawReads.dir/Illumina/SPADES/Spades.illumina.dir/con
+tigs.900.fasta
+# BUSCO was run in mode: genome
+# Gene predictor used: prodigal
+
+	***** Results: *****
+
+	C:98.9%[S:98.2%,D:0.7%],F:0.2%,M:0.9%,n:440	   
+	435	Complete BUSCOs (C)			   
+	432	Complete and single-copy BUSCOs (S)	   
+	3	Complete and duplicated BUSCOs (D)	   
+	1	Fragmented BUSCOs (F)			   
+	4	Missing BUSCOs (M)			   
+	440	Total BUSCO groups searched		   
+
+Dependencies and versions:
+	hmmsearch: 3.1
+	prodigal: 2.6.3
+	sepp: 4.4.0
+
+Placement file versions:
+	list_of_reference_markers.bacteria_odb10.2019-12-16.txt
+	tree.bacteria_odb10.2019-12-16.nwk
+	tree_metadata.bacteria_odb10.2019-12-16.txt
+	supermatrix.aln.bacteria_odb10.2019-12-16.faa
+	mapping_taxids-busco_dataset_name.bacteria_odb10.2019-12-16.txt
+	mapping_taxid-lineage.bacteria_odb10.2019-12-16.txt
+ ````
+ Now we can see that the genome is > 98 % complete acordingly to Busco and it decided that out bacteria belongs to the enterobacteriales order and is 98.9 % complete.
+ 
+ ## Assembly the Nanopore data
+ 
+ 
+
+
+
+
 
