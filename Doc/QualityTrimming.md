@@ -48,7 +48,7 @@ Now we can run trim galore to filter low quality sequences (Q < 30). However, as
 
 
 ```console
-nohup trim_galore -j 4 -q 30 --fastqc --gzip --paired k_p.illumina.ERR1015321_1.fastq.gz k_p.illumina.ERR1015321_2.fastq.gz &
+nohup trim_galore -j 4 -q 30 --fastqc --gzip --paired k_p.illumina.ERR1015321_1.fastq k_p.illumina.ERR1015321_2.fastq &
 ```
 
 **Command explained:**
