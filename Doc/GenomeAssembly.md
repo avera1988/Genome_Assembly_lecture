@@ -469,7 +469,7 @@ Well this genome is not so good acordingly to busco...
 
 ## Hybrid assembly using both Illumina and Nanopore technologies.
 
-As we saw, Illumina assembly produced a very complete (> 98 %) but highly fragmented (104 contigs). Nonetheless, Nanopore technology produced a very few contings (9) but the completeness was super low (~ 19 %). Due to this, the best strategy is to perform a hybrid assembly. 
+As we saw, Illumina-SPADES produced a very complete (> 98 %) but highly fragmented (104 contigs) assembly. Nonetheless, Nanopore technology produced a very few contings (9) but the completeness of the assembly was super low (~ 19 %). Due to this, the best strategy is to perform a hybrid assembly for improving the genome completeness and circularizaition. 
 
 We can use Unicycler for this.
 
