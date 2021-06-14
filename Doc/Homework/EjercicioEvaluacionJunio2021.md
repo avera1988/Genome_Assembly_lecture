@@ -54,4 +54,6 @@ Todos los datos se encuentran en el servidor del Politecnico en el folder:
 ```console
 /home/avera/GenomeAssembly/Data/Report
 ````
+No duden en escribirme si existe alguna duda o problema.
 
+### Buena suerte con sus reportes! 
