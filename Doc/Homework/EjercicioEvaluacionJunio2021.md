@@ -1,6 +1,6 @@
 # Rerporte para evaluar el modulo de ensamble de genomas.
 
-Utilizando las secuencias obtenidas por Illumina () y Nanopore-MiniON (), recuperar el genoma de la bacteria _Klebsiella pneumonie_ lo mas completa posible intntando obtener un cromosoma circular y plasmidos.
+Utilizando las secuencias obtenidas por Illumina (```/home/avera/GenomeAssembly/Data/Report/Illumina```) y Nanopore-MiniON (```/home/avera/GenomeAssembly/Data/Report/Nanopore```), recuperar el genoma de la bacteria _Klebsiella pneumonie_ lo mas completa posible intntando obtener un cromosoma circular y plasmidos.
 
 Para el reporte de evaluacion se pide lo siguiente:
 
@@ -18,15 +18,15 @@ Para el reporte de evaluacion se pide lo siguiente:
 
 6. En el mismo documento de texto entregar una tabla con las estadisticas basicas de cada ensamble (Illumina, Nanopore e hibrido), es decir Numero de contigs, tamaño en bases del genoma, N50, N90 y completeness score (BUSCO)
 
-Genome|Illumina|
+Genome|Traits|
 |---|---|
-length (nt)| 3644585|
-#Contigs |148|
-N50 |73987 n=15|
-N90 |13398 n=57|
-Coverage |59.49|
-Completeness using the bacteria_BUSCO database|96.8|
-Presence of circular contigs| yes|
+Illumina length (nt)| 3644585|
+Illumina #Contigs |148|
+Illumina N50 |73987 n=15|
+Illumina N90 |13398 n=57|
+Illumina Coverage |59.49|
+Illumina Completeness using the bacteria_BUSCO database|96.8|
+Illumina Presence of circular contigs| yes|
 Nanopore length (nt)| 3643883|
 Nanopore #Contigs |79|
 Nanopore N50 |110179 n=10|
@@ -40,4 +40,18 @@ Hybrid N90 |28300 n=36|
 Nanopore Completeness using the bacteria_BUSCO database |99 %|
 Presence of circular contigs| yes|
 
-. Entregar el genoma en formato fasta de la bacteria. Este archivo debera contener el menor numero de contigs y de ser posible al menos uno de ellos debera ser circular.
+7. Entregar en el reporte la imagen de la grafica de cada uno de los ensambles genomicos generada por Bandage.
+
+9. En base a estos resultados discutir cual es el mejor genoma, elaborar su respuesta indicando los valores/caracteristicas que llevaron a considerar ese genoma como el "mejor".
+  
+11. Entregar el genoma con el mejor ensamble en formato fasta. Este archivo debera contener el menor numero de contigs y de ser posible al menos uno de ellos debera ser circular.
+
+**El documento de texto debera ser guardado utilizando su nombre completo en el nombre del archivo algo como: ReporteEnsambles_Arturo_Vera_PoncedeLeon.docx. Este documento de texto y el archivo fasta de su genoma debera ser enviado por correo electronico a
+arturo.vera.ponce.de.leon@nmbu.no antes del *25 de Junio 2021 23:59 hrs* indicando en el "subject" del correo: Reporte_Ensambles_2021_NombreDelAlumno para una mejor distribucion de los mensjaes.**
+
+Todos los datos se encuentran en el servidor del Politecnico en el folder:
+
+```console
+/home/avera/GenomeAssembly/Data/Report
+````
+
