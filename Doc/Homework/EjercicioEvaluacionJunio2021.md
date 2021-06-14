@@ -4,7 +4,7 @@ Utilizando las secuencias obtenidas por Illumina (```/home/avera/GenomeAssembly/
 
 Para el reporte de evaluacion se pide lo siguiente:
 
-1. En un documento de texto, entregar una tabla con las estadisticas basicas del numero de seucuencias obtenidas tanto por Illumina tanto por Nanopore antes y despues del filtrar todas aquellas secuencias que contienen adaptadores y con una calidad Q < 30 (utilizar trimmgalore). La tabla debera ser similar al siguiente ejemplo:
+1. En un documento de texto, entregar una tabla con las estadisticas basicas del numero de seucuencias obtenidas por Illumina y Nanopore antes y despues de filtrar todas aquellas secuencias que contienen adaptadores y con una calidad Q < 30 (utilizar trimmgalore). La tabla debera ser similar al siguiente ejemplo:
 
 |Archivo|RawReads|ReadsAfterGalore|
 |---|---|---|
@@ -13,10 +13,10 @@ Para el reporte de evaluacion se pide lo siguiente:
 |Archivo_NANOPORE|7250|NA|
 
 3. Utilizar las secuencias de illumina y recuperar un draft genomico utilizando el software SPADES.
-4. Utilizar las seciencidas de Nanopore y recuperar un draft genomco utilizando Unicyler.
+4. Utilizar las seciencidas de Nanopore y recuperar un draft genomco utilizando el pipeline Unicyler.
 5. Hacer un ensamlbe hibrido utilizando ambas tecnologias de secuenciacion (unicycler).
 
-6. En el mismo documento de texto entregar una tabla con las estadisticas basicas de cada ensamble (Illumina, Nanopore e hibrido), es decir Numero de contigs, tamaño en bases del genoma, N50, N90 y completeness score (BUSCO)
+6. En el mismo documento de texto entregar una tabla con las estadisticas basicas de cada ensamble (Illumina, Nanopore e hibrido), es decir: Numero de contigs, tamaño en bases del genoma, N50, N90 y completeness score (BUSCO). Ver ejemplo:
 
 Genome|Traits|
 |---|---|
@@ -44,7 +44,7 @@ Presence of circular contigs| yes|
 
 ![imagen](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/hybrid.png)
 
-9. En base a estos resultados discutir cual es el mejor genoma, elaborar su respuesta indicando los valores/caracteristicas que llevaron a considerar ese genoma como el "mejor".
+9. Con base en estos resultados discutir cual es el mejor genoma, elaborar su respuesta indicando los valores/caracteristicas que llevaron a considerar ese genoma como el "mejor".
   
 11. Entregar el genoma con el mejor ensamble en formato fasta. Este archivo debera contener el menor numero de contigs y de ser posible al menos uno de ellos debera ser circular.
 
