@@ -44,7 +44,7 @@ Presence of circular contigs| yes|
 
 ![imagen](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/hybrid.png)
 
-9. Con base en estos resultados discutir cual es el mejor genoma, elaborar su respuesta indicando los valores/caracteristicas que llevaron a considerar ese genoma como el "mejor".
+9. Con base en estos resultados discutir cual es el mejor genoma, elaborar su respuesta indicando los valores/caracteristicas que llevaron a considerar ese ensmable genomico como el "mejor".
   
 11. Entregar el genoma con el mejor ensamble en formato fasta. Este archivo debera contener el menor numero de contigs y de ser posible al menos uno de ellos debera ser circular.
 
