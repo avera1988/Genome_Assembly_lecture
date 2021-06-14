@@ -40,7 +40,9 @@ Hybrid N90 |28300 n=36|
 Nanopore Completeness using the bacteria_BUSCO database |99 %|
 Presence of circular contigs| yes|
 
-7. Entregar en el reporte la imagen de la grafica de cada uno de los ensambles genomicos generada por Bandage.
+7. Entregar en el reporte la imagen de la grafica de cada uno de los ensambles genomicos generada por Bandage. Ejemplo:
+
+![imagen](https://github.com/avera1988/Genome_Assembly_lecture/blob/master/images/hybrid.png)
 
 9. En base a estos resultados discutir cual es el mejor genoma, elaborar su respuesta indicando los valores/caracteristicas que llevaron a considerar ese genoma como el "mejor".
   
