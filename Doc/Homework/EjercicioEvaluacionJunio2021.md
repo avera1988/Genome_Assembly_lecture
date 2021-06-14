@@ -1,6 +1,6 @@
 # Rerporte para evaluar el modulo de ensamble de genomas.
 
-Utilizando las secuencias obtenidas por Illumina (```/home/avera/GenomeAssembly/Data/Report/Illumina```) y Nanopore-MiniON (```/home/avera/GenomeAssembly/Data/Report/Nanopore```), recuperar el genoma de la bacteria _Klebsiella pneumonie_ lo mas completa posible intntando obtener un cromosoma circular y plasmidos.
+Utilizando las secuencias obtenidas por Illumina (```/home/avera/GenomeAssembly/Data/Report/Illumina```) y Nanopore-MiniON (```/home/avera/GenomeAssembly/Data/Report/Nanopore```), recuperar el genoma de la bacteria _Klebsiella pneumonie_ lo mas completa posible intentando obtener un cromosoma circular y plasmidos.
 
 Para el reporte de evaluacion se pide lo siguiente:
 
