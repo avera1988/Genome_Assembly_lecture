@@ -10,7 +10,7 @@ Para el reporte de evaluacion se pide lo siguiente:
 |---|---|---|
 |Archivo_R1|2706330|2394005|
 |Archivo_R2|2706330|2394005|
-|Archivo_NANOPRE|7250|NA|
+|Archivo_NANOPORE|7250|NA|
 
 3. Utilizar las secuencias de illumina y recuperar un draft genomico utilizando el software SPADES.
 4. Utilizar las seciencidas de Nanopore y recuperar un draft genomco utilizando Unicyler.
