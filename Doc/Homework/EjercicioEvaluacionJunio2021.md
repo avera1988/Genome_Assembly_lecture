@@ -49,7 +49,7 @@ Presence of circular contigs| yes|
 11. Entregar el genoma con el mejor ensamble en formato fasta. Este archivo debera contener el menor numero de contigs y de ser posible al menos uno de ellos debera ser circular.
 
 **El documento de texto debera ser guardado utilizando su nombre completo en el nombre del archivo algo como: ReporteEnsambles_Arturo_Vera_PoncedeLeon.docx. Este documento de texto y el archivo fasta de su genoma debera ser enviado por correo electronico a
-arturo.vera.ponce.de.leon@nmbu.no antes del *25 de Junio 2021 23:59 hrs* indicando en el "subject" del correo: Reporte_Ensambles_2021_NombreDelAlumno para una mejor distribucion de los mensjaes.**
+arturo.vera.ponce.de.leon@nmbu.no antes del *Viernes 12 de Diciembre 2021 23:59 hrs* indicando en el "subject" del correo: Reporte_Ensambles_2021_NombreDelAlumno para una mejor distribucion de los mensjaes.**
 
 Todos los datos se encuentran en el servidor del Politecnico en el folder:
 
